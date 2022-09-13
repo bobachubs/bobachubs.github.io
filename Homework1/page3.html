@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<!-- Form themed around my website -->
+
+<head id="main">
+    <link href="styles.css" type="text/css" rel="stylesheet" />
+</head>
+
+<!-- navbar -->
+
+<body class="navBar">
+    <div>
+        <ol>
+            <li><a href="index.html" id="page3">Home</a></li>
+            <li><a href="page1.html" id="page1">Stores (Page 1)</a></li>
+            <li><a href="page2.html" id="page2">Drinks (Page 2)</a></li>
+            <li><a href="page4.html" id="page4">Locations (Page 4)</a></li>
+        </ol>
+    </div>
+</body>
+
+<body class="form">
+    <!-- try to take input and put somewhere? -->
+    <form action="http://www.example.com/form.php" method="get">
+        <!-- create input boxes with labels-->
+        <div>
+            <legend>Suggest A Boba Location!</legend>
+            <label>Store: <input type="text" name="store" size="30" maxlength="75"></label><br />
+            <label>Location: <input type="text" name="flavor" size="30" maxlength="75"></label><br />
+        </div><br />
+        <div>
+            <legend> Your Recommended Drinks:</legend>
+            <p>
+                <!-- Dropdown menu for option selecting favorite page# -->
+                <label for="fav">Which page was your favorite?</label>
+                <select name="referrer" id="fav">
+                    <option value="home">Home</option>
+                    <option value="drinks">Page1</option>
+                    <option value="table">Page2</option>
+                    <option value="form">Page3</option>
+                    <option value="map">Page4</option>
+                </select>
+            </p>
+            <p>
+                <!-- Fill in option -->
+                Will you consider trying my recommended drinks?<br />
+                <label><input type="radio" name="rating" value="yes" /> Yes</label>
+                <label><input type="radio" name="rating" value="no" /> No</label>
+                <label><input type="radio" name="rating" value="maybe" /> Maybe</label>
+            </p>
+            <p>
+                <!-- Free response input -->
+                <label for="Q&C">Questions/Comments:</label><br />
+                <textarea rows="4" cols="40" id="comments"></textarea>
+            </p>
+            <input type="submit" value="Submit" />
+        </div>
+    </form>
+</body>
+
+<!-- footer -->
+<div id="footer">
+    Sarah Li <br>
+    <a href="mailto: sarahli@andrew.cmu.edu">sarahli@andrew.cmu.edu</a>
+</div>
+
+</html>

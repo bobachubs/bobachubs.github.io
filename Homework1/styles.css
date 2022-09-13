@@ -1,0 +1,138 @@
+/* style for all pages */
+@font-face {
+    src: url("fonts/SpecialElite-Regular.ttf");
+    font-family: Elite;
+}
+
+a:link {
+    /* all links */
+    color: rgb(171, 48, 48);
+}
+
+a:visited {
+    /* all links */
+    color: black;
+}
+
+a:hover {
+    /* all links */
+    color: rgb(239, 170, 66)
+}
+
+body {
+    /* all pages */
+    background-color: rgb(237, 209, 176);
+    font-family: Elite;
+    display: block;
+    margin: auto;
+    text-align: center;
+    margin: auto;
+
+}
+
+body.navBar {
+    /* all pages */
+    margin: 25px;
+    list-style-position: inside;
+}
+
+[class *="place"] {
+    /* page 1 */
+    height: 400px;
+    width: 75%;
+    padding: 25px;
+}
+
+div.drinks {
+    /* page 1 */
+    margin-top: 300px;
+    margin-left: 50px;
+    font-style: italic;
+    width: 1000px;
+    overflow: auto;
+    height: auto;
+}
+
+div.drinks img {
+    /* page 1 */
+    min-height: 200px;
+}
+
+div.home {
+    /* home page  */
+    width: 500px;
+    padding: 25px;
+    border: 4px solid white;
+    margin: auto;
+    font-size: 175%;
+
+}
+
+div img {
+    /* page 1 */
+    padding: 20px;
+}
+
+div.page1head {
+    /* page 1 */
+    border: 6px solid rgb(196, 148, 103);
+    width: 350px;
+    padding: 25px;
+    font-size: 250%;
+    left: 300px;
+    margin: auto auto auto 400px;
+    color: white;
+}
+
+div.page1head::first-letter {
+    /* page 1 */
+    color: lightcoral;
+    font-size: 48px;
+}
+
+img> {
+    /* all pages and imgs */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#footer {
+    /* all pages */
+    margin: auto;
+    margin-top: 10px;
+    background-color: rgb(226, 221, 221);
+    width: 200px;
+    text-align: center;
+}
+
+form>div {
+    /* page 3 */
+    border: 2px solid rgb(216, 175, 134);
+    padding: 20px;
+    width: 500px;
+    margin: auto;
+}
+
+ol {
+    /* all pages */
+    list-style: none;
+}
+
+table.menu {
+    /* page 2 */
+    width: 500;
+    padding: 10px;
+    border-spacing: 5px;
+}
+
+table.menu td {
+    /* page 2 */
+    background-color: rgb(216, 175, 134);
+}
+
+table.menu td,
+table.menu th {
+    /* page 2 */
+    border: 2px solid rgb(196, 148, 103);
+}
