@@ -1,138 +1,557 @@
-/* style for all pages */
-@font-face {
-    src: url("fonts/SpecialElite-Regular.ttf");
-    font-family: Elite;
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative&family=Cormorant+Garamond&display=swap');
+
+
+/* default would be for large devices, so no media query set for this */
+body {
+    background-color: rgb(195, 156, 132);
+    font-family: 'Cormorant Garamond';
 }
 
 a:link {
-    /* all links */
-    color: rgb(171, 48, 48);
+    text-decoration: none;
 }
 
-a:visited {
-    /* all links */
-    color: black;
-}
-
-a:hover {
-    /* all links */
-    color: rgb(239, 170, 66)
-}
-
-body {
-    /* all pages */
-    background-color: rgb(237, 209, 176);
-    font-family: Elite;
-    display: block;
-    margin: auto;
-    text-align: center;
-    margin: auto;
-
-}
-
-body.navBar {
-    /* all pages */
-    margin: 25px;
-    list-style-position: inside;
-}
-
-[class *="place"] {
-    /* page 1 */
-    height: 400px;
-    width: 75%;
-    padding: 25px;
-}
-
-div.drinks {
-    /* page 1 */
-    margin-top: 300px;
-    margin-left: 50px;
-    font-style: italic;
-    width: 1000px;
-    overflow: auto;
-    height: auto;
-}
-
-div.drinks img {
-    /* page 1 */
-    min-height: 200px;
-}
-
-div.home {
-    /* home page  */
-    width: 500px;
-    padding: 25px;
-    border: 4px solid white;
-    margin: auto;
-    font-size: 175%;
-
-}
-
-div img {
-    /* page 1 */
-    padding: 20px;
-}
-
-div.page1head {
-    /* page 1 */
-    border: 6px solid rgb(196, 148, 103);
-    width: 350px;
-    padding: 25px;
-    font-size: 250%;
-    left: 300px;
-    margin: auto auto auto 400px;
+a {
     color: white;
 }
 
-div.page1head::first-letter {
-    /* page 1 */
-    color: lightcoral;
-    font-size: 48px;
+a:hover {
+    color: rgb(228, 54, 54);
 }
 
-img> {
-    /* all pages and imgs */
+.background1,
+.background2 {
+    float: left;
+    width: 50%;
+}
+
+
+.bar {
+    position: absolute;
+    top: 100px;
+}
+
+.hamburger {
+    display: none;
+}
+
+.navbar {
+    position: absolute;
+    top: 2.75em;
+    right: 25px;
+    font-size: 140%;
+    font-family: 'Cinzel Decorative';
+}
+
+.navbar a {
+    float: left;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    color: white;
+    padding: 0px 24px;
+    text-decoration: none;
+    font-size: 1em;
 }
 
-#footer {
-    /* all pages */
-    margin: auto;
-    margin-top: 10px;
-    background-color: rgb(226, 221, 221);
-    width: 200px;
+.navbar input[type=text] {
+    padding: 6px;
+    border: none;
+    font-style: italic;
+    border-radius: 5px 5px;
+}
+
+.title {
+    position: absolute;
+    top: .5em;
+    color: white;
+    font-size: 2.25em;
+    font-weight: bold;
+    left: 40px;
+    font-family: 'Cinzel Decorative';
+}
+
+/* the left side of my half-half home page top */
+.titleL {
+    position: absolute;
+    top: 7em;
     text-align: center;
+    left: 2.5em;
+    color: white;
+    font-size: 3em;
+    font-weight: bold;
+    font-family: 'Cinzel Decorative';
 }
 
-form>div {
-    /* page 3 */
-    border: 2px solid rgb(216, 175, 134);
-    padding: 20px;
-    width: 500px;
+/* the right side of my half-half home page top */
+.titleR {
+    position: absolute;
+    top: 10%;
+    right: 20%;
+    color: white;
+    font-size: 2em;
+}
+
+.subtitle2 {
+    font-size: .75em;
+    position: relative;
+    top: -1em;
+}
+
+.subtitle3 {
+    text-align: left;
+    font-size: 2em;
+}
+
+.subtitle4 {
+    position: relative;
+    top: -1em;
+    text-align: right;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.history {
+    font-size: 1.5em;
+}
+
+/* the discover more buttons */
+.discover {
+    background: rgb(195, 153, 132);
+    padding: 2% 10%;
+    font-size: .5em;
+    position: relative;
+    top: -1em;
+}
+
+/* From Here On: Used a lot of relative positioning for positining */
+
+.status hr {
+    border-radius: 5px;
+    float: left;
+    position: relative;
+    width: 7%;
+    top: -6em;
+    right: -53%;
+    margin: 10px;
+    padding: 1px;
+}
+
+#featured {
+    font-size: 3.5em;
+    position: relative;
+    top: 40px;
+    color: rgb(158, 49, 49);
+}
+
+.featured {
     margin: auto;
+    font-family: 'Cormorant Garamond';
+
 }
 
-ol {
-    /* all pages */
-    list-style: none;
+.featured img {
+    height: 50%;
+    width: 100%;
 }
 
-table.menu {
-    /* page 2 */
-    width: 500;
+
+.featured div {
+    float: left;
+    position: relative;
+    left: 11%;
+    text-align: center;
+    padding: 25px;
+
+}
+
+.featured a {
+    font-size: 1em;
+    background-color: rgb(158, 49, 49);
+    padding: 10px 25px;
+}
+
+.statusf {
+    clear: both;
+    display: flex;
+    justify-content: center;
+}
+
+.statusf hr {
+    display: block;
+    border-radius: 5px;
+    float: left;
+    margin: 10px;
+    width: 5%;
+    size: 4px;
+}
+
+#background1 {
+    height: 90%;
+    width: 50%;
+    position: relative;
+    left: -15%;
+    top: 5em;
+}
+
+#candles {
+    position: relative;
+    width: 35%;
+    height: 85%;
+    left: -45%;
+    top: 8em;
+}
+
+.candles a {
+    position: relative;
+    font-size: 2em;
+    background-color: rgb(158, 49, 49);
+    padding: 8px 30px;
+    left: -75%;
+    top: 2em;
+    opacity: 0.95;
+}
+
+#background2 {
+    position: relative;
+    width: 38%;
+    height: 92%;
+    left: 50%;
+    top: -38em;
+}
+
+#stores {
+    position: relative;
+    width: 35%;
+    height: 85%;
+    left: 20%;
+    top: -36em;
+}
+
+.stores a {
+    position: relative;
+    font-size: 2em;
+    background-color: rgb(188, 54, 54);
+    padding: 8px 30px;
+    left: -10%;
+    top: -20em;
+    opacity: 0.95;
+}
+
+.subscribe {
+    clear: both;
+    position: relative;
+    color: white;
+    font-size: 4em;
+    text-align: center;
+    top: -70%;
+}
+
+#subscribeBar {
+    position: relative;
+    top: -30em;
+}
+
+.socials {
+    background-color: white;
+    width: 100%;
+    height: 20%;
+    float: left;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.socials a {
+    font-size: 2em;
     padding: 10px;
-    border-spacing: 5px;
+    line-height: 150px;
+    height: 200px;
+    color: black;
 }
 
-table.menu td {
-    /* page 2 */
-    background-color: rgb(216, 175, 134);
+/* intended for tablets with this max width, from 3 to 2 columns */
+@media screen and (max-width: 768px) {
+
+    .background1,
+    .background2 {
+        width: 100%;
+    }
+
+    .product3,
+    .product2 {
+        display: none;
+    }
+
+    .bar {
+        top: 55px;
+    }
+
+    .navbar {
+        display: none;
+    }
+
+    .title {
+        font-size: 1.5em;
+        left: 30px;
+        top: 10px;
+    }
+
+    .titleL {
+        top: 4em;
+        text-align: center;
+        left: 2.5em;
+        max-width: 60%;
+        font-size: 2.5em;
+    }
+
+    .history {
+        position: relative;
+        top: -1.25em;
+        font-size: 1.25em;
+        left: 4.2em;
+    }
+
+    .discover {
+        padding: 3% 15%;
+        font-size: 0.75em;
+        border-radius: 15px 15px 15px 15px;
+        left: -1.5em;
+        top: 0.5em;
+    }
+
+    .titleR {
+        top: 70%;
+        left: 15%;
+        font-size: 1.5em;
+    }
+
+    .status hr {
+        width: 4%;
+        top: -5em;
+        right: -32%;
+        margin: 6px;
+        padding: 1px;
+    }
+
+    #featured {
+        font-size: 2em;
+        left: 15px;
+    }
+
+    .featured div {
+        left: 7%;
+        padding: 30px;
+        font-size: 1.2em;
+    }
+
+    .featured a {
+        position: relative;
+        left: 5px;
+        top: -1em;
+        font-size: .75em;
+    }
+
+    .statusf {
+        position: relative;
+        top: -1.5em;
+    }
+
+    #background1 {
+        height: 70%;
+        width: 100%;
+        left: 1px;
+    }
+
+    #candles {
+        width: 90%;
+        height: 70%;
+        opacity: 0.6;
+        top: -27.75em;
+        left: 6.5%;
+
+    }
+
+    .candles a {
+        padding: 6px 30px;
+        left: 30%;
+        top: -15em;
+        font-size: 3em;
+        border-radius: 15px 15px 15px 15px;
+    }
+
+    #background2 {
+        height: 70%;
+        width: 100%;
+        top: -31em;
+        left: 0%;
+    }
+
+    #stores {
+        width: 100%;
+        height: 70%;
+        top: -63.5em;
+        left: 0%;
+        opacity: 0.8;
+    }
+
+    .stores a {
+        padding: 6px 30px;
+        left: 32%;
+        top: -26.5em;
+        font-size: 2em;
+        font-size: 3em;
+        border-radius: 15px 15px 15px 15px;
+    }
+
+    .subscribe {
+        font-size: 3em;
+        top: -135%;
+    }
+
+    #subscribeBar {
+        top: -130%;
+    }
+
+    .socials {
+        background-color: white;
+        width: 100%;
+        height: 20%;
+        float: left;
+        text-align: center;
+        vertical-align: middle;
+        position: relative;
+        top: -100%;
+    }
+
+    .socials a {
+        font-size: 1.5em;
+        padding: 10px;
+        line-height: 150px;
+        height: 200px;
+        color: black;
+    }
+
 }
 
-table.menu td,
-table.menu th {
-    /* page 2 */
-    border: 2px solid rgb(196, 148, 103);
+/* intended for phone screes, 1 column layout */
+@media screen and (max-width: 476) {
+
+    .background1,
+    .background2 {
+        width: 100%;
+    }
+
+    .product2,
+    .product3 {
+        display: none;
+    }
+
+    .bar {
+        top: 55px;
+    }
+
+    .navbar {
+        display: none;
+    }
+
+    .title {
+        font-size: 1.5em;
+        left: 30px;
+        top: 10px;
+    }
+
+    .titleL {
+        top: 6.5em;
+        text-align: center;
+        left: 2.3em;
+        font-size: 1.5em;
+    }
+
+    .titleR {
+        top: 8%;
+        right: 20%;
+        font-size: 1em;
+    }
+
+    .status hr {
+        width: 4%;
+        top: -2.5em;
+        right: -53%;
+        margin: 6px;
+        padding: 1px;
+    }
+
+    #featured {
+        font-size: 2em;
+        left: 75px;
+    }
+
+    .featured div {
+        left: 3%;
+        padding: 30px;
+    }
+
+    #background1 {
+        height: 60%;
+        width: 50%;
+    }
+
+    #candles {
+        width: 40%;
+        height: 60%;
+    }
+
+    .candles a {
+        padding: 6px 30px;
+        left: 15%;
+        top: 1em;
+        font-size: 2em;
+    }
+
+    #background2 {
+        height: 60%;
+        width: 40%;
+        top: -26em;
+        left: 55%;
+    }
+
+    #stores {
+        width: 40%;
+        height: 60%;
+        top: -23em;
+        left: 22%;
+    }
+
+    .stores a {
+        padding: 6px 30px;
+        left: -7%;
+        top: -13.25em;
+        font-size: 2em;
+    }
+
+    .subscribe {
+        font-size: 3em;
+        top: -45%;
+    }
+
+    #subscribeBar {
+        top: -20em;
+    }
+
+    .socials {
+        background-color: white;
+        width: 100%;
+        height: 20%;
+        float: left;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .socials a {
+        font-size: 2em;
+        padding: 10px;
+        line-height: 150px;
+        height: 200px;
+        color: black;
+    }
+
 }
