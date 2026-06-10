@@ -148,6 +148,21 @@ nav{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:500;back
 .honor-sub{font-size:.74rem;color:var(--ink2);line-height:1.5;flex:1}
 .honor-date{font-size:.62rem;color:var(--ink3);margin-top:4px}
 
+/* EXPERIENCE */
+.exp-row{padding:16px 0;border-bottom:1px solid rgba(60,90,130,.08);display:flex;flex-direction:column;gap:5px}
+.exp-row:last-child{border-bottom:none}
+.exp-hdr{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.exp-title{font-size:.9rem;font-weight:700;color:var(--ink);display:block}
+.exp-org{font-size:.75rem;color:var(--ink2);display:block;margin-top:1px}
+.exp-date{font-size:.68rem;color:var(--ink3);white-space:nowrap;flex-shrink:0;padding-top:2px}
+.exp-desc{font-size:.76rem;line-height:1.62;color:var(--ink2)}
+
+/* PUBLICATIONS */
+.pub-row{display:flex;align-items:flex-start;gap:12px;padding:11px 0;border-bottom:1px solid rgba(60,90,130,.08)}
+.pub-row:last-child{border-bottom:none}
+.pub-badge{flex-shrink:0;margin-top:2px}
+.pub-text{font-size:.78rem;line-height:1.65;color:var(--ink2);flex:1}
+
 /* FOOTER */
 footer{
   position:relative;z-index:1;
@@ -255,7 +270,7 @@ footer{
       <div>
         <div class="eyebrow">Data Scientist &amp; Researcher &nbsp;·&nbsp; San Francisco, CA</div>
         <h1 class="hero-name">Sarah Li</h1>
-        <p class="hero-one">Working at the intersection of <strong>Healthcare, AI, and Big Data </strong> — with a focus on end-to-end data storytelling that reaches patients.</p>
+        <p class="hero-one">M.S. Health Data Science · UCSF · GPA 4.0 — building ML systems at the intersection of <strong>cancer immunology, global health, and clinical analytics</strong>. Two manuscripts in preparation; multiple nationally recognized research awards.</p>
         <div class="hero-contact">
           <span>(408) 996-7021</span>
           <span class="sep">|</span>
@@ -297,9 +312,50 @@ footer{
       <div class="detail-label">Skills &amp; Tools</div>
       <div class="skills-grid">
         <span class="pill pill-r">Python</span><span class="pill pill-r">R</span><span class="pill pill-r">SQL</span><span class="pill pill-r">Java</span><span class="pill pill-r">C</span><span class="pill pill-r">JavaScript</span><span class="pill pill-r">HTML/CSS</span>
-        <span class="pill pill-s">PyTorch</span><span class="pill pill-s">scikit-learn</span><span class="pill pill-s">Survival Analysis</span><span class="pill pill-s">Encoder-Decoder</span><span class="pill pill-s">Transformers</span><span class="pill pill-s">LLMs</span><span class="pill pill-s">GNNs</span>
-        <span class="pill pill-m">Epic EHR</span><span class="pill pill-m">REDCap</span>
-        <span class="pill">Pandas</span><span class="pill">NumPy</span><span class="pill">OpenCV</span><span class="pill">Tableau</span><span class="pill">Figma</span><span class="pill">Excel</span><span class="pill">Git</span><span class="pill">Unix/Linux</span>
+        <span class="pill pill-s">PyTorch</span><span class="pill pill-s">scikit-learn</span><span class="pill pill-s">Survival Analysis</span><span class="pill pill-s">Encoder-Decoder</span><span class="pill pill-s">Transformers</span><span class="pill pill-s">LLMs</span><span class="pill pill-s">GNNs</span><span class="pill pill-s">Causal Inference</span><span class="pill pill-s">Audio ML</span>
+        <span class="pill pill-m">UCSF Epic EHR</span><span class="pill pill-m">Stanford STARR</span><span class="pill pill-m">REDCap</span>
+        <span class="pill">Pandas</span><span class="pill">NumPy</span><span class="pill">OpenCV</span><span class="pill">Librosa</span><span class="pill">Tableau</span><span class="pill">Figma</span><span class="pill">Git</span><span class="pill">Unix/Linux</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:14px">
+    <div class="sec-hdr">
+      <div>
+        <div class="eyebrow" style="margin-bottom:6px">Work</div>
+        <h2 class="sec-title">Experience</h2>
+      </div>
+    </div>
+    <div class="g" style="padding:4px 32px 4px">
+      <div class="exp-row">
+        <div class="exp-hdr">
+          <div>
+            <span class="exp-title">Educational Assistant — DataSci 224: Understanding AI</span>
+            <span class="exp-org">University of California, San Francisco</span>
+          </div>
+          <span class="exp-date">Mar 2026 – Present</span>
+        </div>
+        <p class="exp-desc">Grade assignments and support weekly lab sessions for a graduate ML course covering supervised, unsupervised, and deep learning theory and applications; provide written feedback to health data science students.</p>
+      </div>
+      <div class="exp-row">
+        <div class="exp-hdr">
+          <div>
+            <span class="exp-title">Data Science Intern</span>
+            <span class="exp-org">AxBio Inc. &nbsp;·&nbsp; Santa Clara, CA</span>
+          </div>
+          <span class="exp-date">Jun – Aug 2023</span>
+        </div>
+        <p class="exp-desc">Built Python/OpenCV pipelines to spatially map and classify cells across 256×256 nanopore sequencing chip grids; automated Excel reporting, reducing the bioengineering team's manual review labor by &gt;75% and accelerating experiment turnaround.</p>
+      </div>
+      <div class="exp-row">
+        <div class="exp-hdr">
+          <div>
+            <span class="exp-title">Software Engineering Intern</span>
+            <span class="exp-org">Stealth Startup &nbsp;·&nbsp; San Jose, CA</span>
+          </div>
+          <span class="exp-date">Jun – Aug 2022</span>
+        </div>
+        <p class="exp-desc">Ported deepfake detection model to macOS using Docker; resolved cross-platform build dependencies and replaced GPU operations with CPU alternatives.</p>
       </div>
     </div>
   </div>
@@ -310,13 +366,13 @@ footer{
         <div class="eyebrow" style="margin-bottom:6px">Research &amp; work</div>
         <h2 class="sec-title">Project Highlights</h2>
       </div>
-      <span class="sec-sub">5 projects &nbsp;·&nbsp; click poster to preview &nbsp;·&nbsp; GitHub link bottom right</span>
+      <span class="sec-sub">6 projects &nbsp;·&nbsp; click poster to preview &nbsp;·&nbsp; GitHub link bottom right</span>
     </div>
     <div class="proj-grid">
 
       <!-- ITGAP: no poster yet, thumb links to GitHub -->
       <div class="proj-card">
-        <div class="proj-thumb thumb-itgap" onclick="window.open('https://github.com/bobachubs','_blank')">
+        <div class="proj-thumb thumb-itgap" onclick="window.open('https://github.com/mlizhangx/ITGAP/tree/main','_blank')">
           <div class="proj-thumb-overlay"></div>
           <div class="proj-year">UCSF &nbsp;·&nbsp; 2025</div>
           <div class="thumb-icon">&#x1F9EC;</div>
@@ -328,7 +384,7 @@ footer{
           <div class="proj-desc">Encoder-decoder framework integrating TCR sequences (Atchley factors + positional encoding) with batch-corrected single-cell transcriptomics. Applied to phase II clinical trial data (CD40 agonist, esophageal/GEJ cancer). PR-AUC 0.934 vs. 0.717 TCR-only baseline. Presented at NCI/NIH ITCR Symposium as session chair.</div>
           <div class="proj-tags"><span class="pill pill-t">scRNA-seq</span><span class="pill pill-s">TCR</span><span class="pill">Encoder-Decoder</span><span class="pill">PyTorch</span></div>
           <div class="proj-footer">
-            <a class="proj-gh" href="https://github.com/bobachubs" target="_blank">GitHub ↗</a>
+            <a class="proj-gh" href="https://github.com/mlizhangx/ITGAP/tree/main" target="_blank">GitHub ↗</a>
           </div>
         </div>
       </div>
@@ -409,6 +465,24 @@ footer{
         </div>
       </div>
 
+      <!-- SDOH: Stanford AI Ethics Capstone -->
+      <div class="proj-card">
+        <div class="proj-thumb" style="background:linear-gradient(145deg,#8a7ab8,#6a5c98);cursor:default">
+          <div class="proj-thumb-overlay"></div>
+          <div class="proj-year">Stanford / UCSF &nbsp;·&nbsp; 2026</div>
+          <div class="thumb-icon">&#x1F9E0;</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-cat">Clinical AI &amp; Fairness &nbsp;·&nbsp; Stanford AI Ethics Capstone</div>
+          <div class="proj-title">LLM Extraction of SDOH for Outcome Prediction</div>
+          <div class="proj-desc">Prompt-engineered SecureGPT LLM to extract social determinants of health (housing, food insecurity, transportation) from 600K+ de-identified Stanford STARR clinical notes. Random forest classifier predicts 1-year post-revascularization outcomes (amputation, death, reintervention) in 4,821 CLTI patients with fairness evaluation across race, insurance type, and interpreter need using Fairlearn.</div>
+          <div class="proj-tags"><span class="pill pill-m">LLM</span><span class="pill pill-s">Stanford STARR</span><span class="pill pill-r">Fairness</span><span class="pill">Python</span></div>
+          <div class="proj-footer">
+            <span style="font-size:.62rem;color:var(--ink3);font-style:italic">In progress</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -429,6 +503,33 @@ footer{
       <div class="honor-card g"><div class="honor-title">National Japan Bowl — 4th &amp; 5th Place</div><div class="honor-sub">Competed nationally two consecutive years (Level 3 &amp; Level 4)</div><div class="honor-date">2018–2019</div></div>
       <div class="honor-card g"><div class="honor-title">Kakehashi Project</div><div class="honor-sub">Selected by Japanese government for U.S. cultural diplomacy exchange; met Princess Takamado, Akie Abe, and officials from Japan's Ministry of Foreign Affairs</div><div class="honor-date">2019</div></div>
       <div class="honor-card g"><div class="honor-title">Harvard Summer Program</div><div class="honor-sub">Water Engineering &amp; Resource Management; built water filtration systems with students from Flint, MI to Hong Kong to Kenya</div><div class="honor-date">2018</div></div>
+    </div>
+  </div>
+
+  <div style="margin-top:52px;margin-bottom:60px">
+    <div class="sec-hdr">
+      <div>
+        <div class="eyebrow" style="margin-bottom:6px">Research Output</div>
+        <h2 class="sec-title">Publications &amp; Presentations</h2>
+      </div>
+    </div>
+    <div class="g" style="padding:8px 32px">
+      <div class="pub-row">
+        <span class="pub-badge pill pill-s">In Preparation</span>
+        <p class="pub-text"><strong>Li S*</strong>, Le P* et al. ITGAP: Integration of TCR and Gene Expression for Antigen Prediction. <em>(*co-first authors)</em></p>
+      </div>
+      <div class="pub-row">
+        <span class="pub-badge pill pill-s">In Preparation</span>
+        <p class="pub-text"><strong>Li S</strong> et al. Smartphone Cough Acoustics to Predict Chest X-Ray Abnormalities Among Adults Evaluated for Tuberculosis.</p>
+      </div>
+      <div class="pub-row">
+        <span class="pub-badge pill pill-t">Poster · Nov 2025</span>
+        <p class="pub-text"><strong>Li S</strong> et al. AI-Driven Survival Prediction in Metastatic Prostate Cancer: Integrating PSA Kinetics and Genomic Data. <em>BBSW (1st Place); UCSF Prostate Cancer Retreat (Podium); NCI/NIH ITCR Symposium.</em></p>
+      </div>
+      <div class="pub-row">
+        <span class="pub-badge pill pill-t">Poster · Mar 2026</span>
+        <p class="pub-text"><strong>Li S</strong> et al. Predicting Abnormal Lower Airway Disease using Cough Recordings. <em>UCSF IGHS Retreat — Best Overall Poster.</em></p>
+      </div>
     </div>
   </div>
 
