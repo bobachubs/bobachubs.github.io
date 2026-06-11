@@ -577,7 +577,7 @@ footer{
 .life-masonry{columns:3 240px;column-gap:14px}
 .life-card{break-inside:avoid;margin-bottom:14px;border-radius:var(--r-md);overflow:hidden;position:relative;cursor:pointer;background:#e2e8f0;transition:transform .22s,box-shadow .22s}
 .life-card:hover{transform:translateY(-3px);box-shadow:var(--glass-hover)}
-.life-card img{display:block;width:100%;height:auto}
+.life-card img{display:block;width:100%;height:240px;object-fit:cover;object-position:center}
 .life-card-cap{position:absolute;bottom:0;left:0;right:0;padding:10px 12px 9px;background:linear-gradient(transparent,rgba(15,23,42,.62));color:#fff;font-size:.73rem;opacity:0;transition:opacity .2s;line-height:1.4}
 .life-card:hover .life-card-cap{opacity:1}
 .reveal{opacity:0;transform:translateY(16px);transition:opacity .45s ease,transform .45s ease}
@@ -609,8 +609,7 @@ footer{
     </div>
 
     <div class="life-filters" id="lifeFilters">
-      <button class="life-filter active" data-filter="all">All</button>
-      <button class="life-filter" data-filter="travel">Travel</button>
+      <button class="life-filter active" data-filter="travel">Travel</button>
       <button class="life-filter" data-filter="food">Food</button>
       <button class="life-filter" data-filter="art">Art</button>
       <button class="life-filter" data-filter="friends">Friends</button>
@@ -705,10 +704,11 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal()
 
 // PAGE ROUTING
 let cur = 'home';
-function go(p) {
+function go(p, noHash) {
   if (p === cur) return;
   const f = document.getElementById('page-' + cur), t = document.getElementById('page-' + p);
   if (!t) return;
+  if (!noHash) location.hash = p === 'home' ? '' : p;
   f.style.cssText = 'display:block;opacity:0;transform:translateY(-10px);transition:opacity .2s ease,transform .2s ease;';
   setTimeout(() => {
     f.classList.remove('active'); f.style.cssText = '';
@@ -719,6 +719,9 @@ function go(p) {
     document.querySelectorAll('.nav-links a').forEach(a => a.classList.toggle('active', a.dataset.p === p));
   }, 190);
 }
+// restore page from hash on load/back
+(function(){const h=location.hash.replace('#','');if(h&&document.getElementById('page-'+h)){const t=document.getElementById('page-'+h);document.getElementById('page-home').classList.remove('active');t.classList.add('active');cur=h;document.querySelectorAll('.nav-links a').forEach(a=>a.classList.toggle('active',a.dataset.p===h));}})();
+window.addEventListener('hashchange',()=>{const h=location.hash.replace('#','')||'home';if(h!==cur)go(h,true);});
 
 function goProj() {
   if (cur !== 'home') {
@@ -748,13 +751,20 @@ if (projAnchor) observer.observe(projAnchor);
 
 // Life page photos
 const LIFE_PHOTOS = [
+  {src:'images/travel-colosseum.jpg',cat:'travel',cap:'Colosseum · Rome'},
   {src:'images/travel-vatican.jpg',cat:'travel',cap:'Vatican Museums spiral staircase · Rome'},
+  {src:'images/travel-rome-obelisk.jpg',cat:'travel',cap:'St. Peter's Square · Vatican City'},
+  {src:'images/travel-rome-alley.jpg',cat:'travel',cap:'Trastevere alley · Rome'},
   {src:'images/travel-eiffel.jpg',cat:'travel',cap:'Eiffel Tower at dusk · Paris'},
-  {src:'images/travel-ggb.jpg',cat:'travel',cap:'Golden Gate Bridge · San Francisco'},
   {src:'images/travel-suzhou.jpg',cat:'travel',cap:'Ancient water town · Suzhou, China'},
   {src:'images/travel-westlake.jpg',cat:'travel',cap:'Lotus ponds at West Lake · Hangzhou'},
   {src:'images/travel-yugarden.jpg',cat:'travel',cap:'Yu Garden · Shanghai'},
   {src:'images/travel-nola.jpg',cat:'travel',cap:'St. Charles streetcar · New Orleans'},
+  {src:'images/travel-nola-night.jpg',cat:'travel',cap:'French Quarter at night · New Orleans'},
+  {src:'images/travel-egret.jpg',cat:'travel',cap:'Baker Beach at golden hour · San Francisco'},
+  {src:'images/food-rome-porchetta.jpg',cat:'food',cap:'Porchetta lunch · Rome'},
+  {src:'images/food-rome-sandwich.jpg',cat:'food',cap:'Roman-style sandwiches · Rome'},
+  {src:'images/food-rome-gelato.jpg',cat:'food',cap:'Gelato · Rome'},
   {src:'images/food-sesame.jpg',cat:'food',cap:'Sesame balls · SF'},
   {src:'images/food-japanese.jpg',cat:'food',cap:'Udon & rice bowls'},
   {src:'images/food-boba.jpg',cat:'food',cap:'Boba run · SF'},
@@ -768,7 +778,9 @@ const LIFE_PHOTOS = [
   {src:'images/friends-bench.jpg',cat:'friends',cap:'Bay views · SF, 2025'},
   {src:'images/friends-stickers.jpg',cat:'friends',cap:'Out in the city · 2026'},
   {src:'images/friends-ucsf.jpg',cat:'friends',cap:'UCSF Health Data Science cohort · 2025'},
+  {src:'images/friends-beach.jpg',cat:'friends',cap:'Baker Beach at dusk · SF'},
   {src:'images/research-poster.jpg',cat:'research',cap:'Best Poster · IGHS 2026'},
+  {src:'images/research-poster2.jpg',cat:'research',cap:'Poster session · 2025'},
 ];
 
 const lifeMasonry = document.getElementById('lifeMasonry');
@@ -790,7 +802,7 @@ function buildLifeGrid(filter) {
     lifeMasonry.querySelectorAll('.life-card').forEach(c => io.observe(c));
   }, 30);
 }
-buildLifeGrid('all');
+buildLifeGrid('travel');
 
 document.querySelectorAll('.life-filter').forEach(btn => {
   btn.addEventListener('click', () => {
