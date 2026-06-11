@@ -566,263 +566,70 @@ footer{
 
 <style>
 /* LIFE PAGE */
-.lw { padding:0 18px 80px; max-width:1220px; margin:0 auto; }
-.life-top { padding:40px 44px; margin-bottom:28px; }
-.life-title { font-size:clamp(2.2rem,4.5vw,4rem); font-weight:700; letter-spacing:-.03em; line-height:1; margin:14px 0 10px; }
-.life-sub { font-size:.88rem; color:var(--ink2); max-width:540px; line-height:1.75; }
-.life-note { font-size:.73rem; color:var(--ink3); margin-top:10px; font-style:italic; }
-
-/* category sections */
-.life-section { margin-bottom:44px; }
-.life-section-hdr{
-  display:flex;
-  align-items:center;
-  gap:14px;
-  margin-bottom:16px;
-  padding-bottom:10px;
-  border-bottom:1px solid rgba(60,90,130,.1);
-  flex-wrap:wrap;
-}
-.life-section-hdr .eyebrow{
-  margin:0;
-  min-height:1em;
-}
-
-.life-section-count{
-  display:flex;
-  align-items:center;
-  line-height:1;
-}
-.life-section-title { font-size:1.05rem; font-weight:700; letter-spacing:-.01em; color:var(--ink); }
-
-/* photo grid */
-.life-grid{
-  display:grid;
-  grid-template-columns:repeat(3, minmax(0, 1fr));
-  gap:14px;
-  align-items:stretch;
-}
-
-.lc{
-  position:relative;
-  border-radius:var(--r-md);
-  overflow:hidden;
-  background:#ffffff;
-  border:1px solid var(--glass-border);
-  box-shadow:var(--glass-shadow);
-  cursor:pointer;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-  gap:8px;
-  aspect-ratio:4/3;
-  min-height:220px;
-  transition:transform .22s, box-shadow .22s;
-}
-
-.lc.lc-wide{
-  grid-column:span 2;
-  aspect-ratio:8/3;
-  min-height:220px;
-  height:auto;
-}
-
-.lc img{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:center;
-  display:none;
-}
-
-@media (max-width:680px){
-  .life-grid{
-    grid-template-columns:repeat(2, minmax(0, 1fr));
-  }
-
-  .lc{
-    aspect-ratio:4/3;
-    min-height:170px;
-  }
-
-  .lc.lc-wide{
-    grid-column:span 1;
-    aspect-ratio:4/3;
-    min-height:170px;
-  }
+.lw{padding:0 18px 80px;max-width:1220px;margin:0 auto}
+.life-top{padding:40px 44px;margin-bottom:28px}
+.life-title{font-size:clamp(2.2rem,4.5vw,4rem);font-weight:700;letter-spacing:-.03em;line-height:1;margin:14px 0 10px}
+.life-sub{font-size:.88rem;color:var(--ink2);max-width:540px;line-height:1.75}
+.life-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.life-filter{padding:7px 18px;border-radius:99px;border:1px solid var(--glass-border);background:#f1f5f9;color:var(--ink2);font-size:.82rem;font-family:var(--sans);cursor:pointer;transition:all .18s;line-height:1}
+.life-filter:hover{border-color:var(--terra);color:var(--terra)}
+.life-filter.active{background:var(--terra);color:#fff;border-color:var(--terra)}
+.life-masonry{columns:3 240px;column-gap:14px}
+.life-card{break-inside:avoid;margin-bottom:14px;border-radius:var(--r-md);overflow:hidden;position:relative;cursor:pointer;background:#e2e8f0;transition:transform .22s,box-shadow .22s}
+.life-card:hover{transform:translateY(-3px);box-shadow:var(--glass-hover)}
+.life-card img{display:block;width:100%;height:auto}
+.life-card-cap{position:absolute;bottom:0;left:0;right:0;padding:10px 12px 9px;background:linear-gradient(transparent,rgba(15,23,42,.62));color:#fff;font-size:.73rem;opacity:0;transition:opacity .2s;line-height:1.4}
+.life-card:hover .life-card-cap{opacity:1}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .45s ease,transform .45s ease}
+.reveal.revealed{opacity:1;transform:none}
+.lb-overlay{position:fixed;inset:0;background:rgba(10,14,26,.93);z-index:9000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s}
+.lb-overlay.open{opacity:1;pointer-events:all}
+.lb-content{display:flex;flex-direction:column;align-items:center;gap:12px;max-width:90vw}
+.lb-img{max-width:88vw;max-height:82vh;object-fit:contain;border-radius:8px;display:block}
+.lb-cap{color:rgba(255,255,255,.72);font-size:.82rem;text-align:center}
+.lb-close{position:fixed;top:22px;right:26px;background:none;border:none;color:#fff;font-size:2rem;cursor:pointer;opacity:.7;line-height:1;padding:4px 10px}
+.lb-close:hover{opacity:1}
+.lb-nav{position:fixed;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.12);border:none;color:#fff;font-size:2.4rem;cursor:pointer;padding:8px 14px;border-radius:8px;line-height:1;transition:background .18s}
+.lb-nav:hover{background:rgba(255,255,255,.22)}
+.lb-prev{left:16px}
+.lb-next{right:16px}
+@media(max-width:680px){
+  .life-masonry{columns:2 160px}
+  .lb-nav{font-size:1.6rem;padding:6px 10px}
 }
 </style>
+
 <!-- LIFE PAGE -->
 <div class="page" id="page-life">
   <div class="lw">
-
     <div class="life-top g">
       <div class="eyebrow">Beyond the lab</div>
       <h2 class="life-title">Life &amp; Hobbies</h2>
-      <p class="life-sub">
-        Art, movement, food, and everything that makes the work make sense.
-        A glimpse into the people, places, and passions that keep me grounded.
-      </p>
+      <p class="life-sub">Art, movement, food, and everything that keeps me grounded — a glimpse into the places, people, and passions outside the lab.</p>
     </div>
 
-    <div class="life-section">
-      <div class="life-section-hdr">
-        <div class="eyebrow" style="margin:0">Travel</div>
-        <span class="life-section-count">Places &amp; adventures</span>
-      </div>
-      <div class="life-grid">
-        <div class="lc" id="lc-tr1">
-          <input type="file" accept="image/*" onchange="ll(this,'lc-tr1')">
-          <img alt="">
-          <div class="lc-ov"></div>
-          <div class="lc-icon">✦</div>
-          <div class="lc-name">Japan</div>
-          <div class="lc-hint">Click to add photo</div>
-          <div class="lc-lbl">Japan</div>
-        </div>
-
-        <div class="lc" id="lc-tr2">
-          <input type="file" accept="image/*" onchange="ll(this,'lc-tr2')">
-          <img alt="">
-          <div class="lc-ov"></div>
-          <div class="lc-icon">✦</div>
-          <div class="lc-name">Somewhere</div>
-          <div class="lc-hint">Click to add photo</div>
-          <div class="lc-lbl">Travel</div>
-        </div>
-
-        <div class="lc" id="lc-tr3">
-          <input type="file" accept="image/*" onchange="ll(this,'lc-tr3')">
-          <img alt="">
-          <div class="lc-ov"></div>
-          <div class="lc-icon">✦</div>
-          <div class="lc-name">Somewhere</div>
-          <div class="lc-hint">Click to add photo</div>
-          <div class="lc-lbl">Travel</div>
-        </div>
-
-        <div class="lc" id="lc-tr4">
-          <input type="file" accept="image/*" onchange="ll(this,'lc-tr4')">
-          <img alt="">
-          <div class="lc-ov"></div>
-          <div class="lc-icon">✦</div>
-          <div class="lc-name">Somewhere</div>
-          <div class="lc-hint">Click to add photo</div>
-          <div class="lc-lbl">Travel</div>
-        </div>
-      </div>
+    <div class="life-filters" id="lifeFilters">
+      <button class="life-filter active" data-filter="all">All</button>
+      <button class="life-filter" data-filter="travel">Travel</button>
+      <button class="life-filter" data-filter="food">Food</button>
+      <button class="life-filter" data-filter="art">Art</button>
+      <button class="life-filter" data-filter="friends">Friends</button>
+      <button class="life-filter" data-filter="research">Research</button>
     </div>
 
-    <div class="life-section">
-      <div class="life-section-hdr">
-        <div class="eyebrow" style="margin:0">Hobbies</div>
-        <span class="life-section-count">What I do when I'm not at my desk</span>
-      </div>
-      <div class="life-grid">
-        <div class="lc" id="lc-wc">
-          <input type="file" accept="image/*" onchange="ll(this,'lc-wc')">
-          <img alt="">
-          <div class="lc-ov"></div>
-          <div class="lc-icon">✦</div>
-          <div class="lc-name">Watercolor</div>
-          <div class="lc-hint">Click to add photo</div>
-          <div class="lc-lbl">Watercoloring</div>
-        </div>
-
-        <div class="lc" id="lc-zumba">
-          <input type="file" accept="image/*" onchange="ll(this,'lc-zumba')">
-          <img alt="">
-          <div class="lc-ov"></div>
-          <div class="lc-icon">✦</div>
-          <div class="lc-name">Zumba</div>
-          <div class="lc-hint">Click to add photo</div>
-          <div class="lc-lbl">Zumba</div>
-        </div>
-
-        <div class="lc" id="lc-food">
-          <input type="file" accept="image/*" onchange="ll(this,'lc-food')">
-          <img alt="">
-          <div class="lc-ov"></div>
-          <div class="lc-icon">✦</div>
-          <div class="lc-name">Food &amp; Restaurants</div>
-          <div class="lc-hint">Click to add photo</div>
-          <div class="lc-lbl">Food adventures</div>
-        </div>
-
-        <div class="lc" id="lc-dance">
-          <input type="file" accept="image/*" onchange="ll(this,'lc-dance')">
-          <img alt="">
-          <div class="lc-ov"></div>
-          <div class="lc-icon">✦</div>
-          <div class="lc-name">Breakdancing</div>
-          <div class="lc-hint">Click to add photo</div>
-          <div class="lc-lbl">Breakdancing at CMU</div>
-        </div>
-
-        <div class="lc lc-wide" id="lc-hobby5">
-          <input type="file" accept="image/*" onchange="ll(this,'lc-hobby5')">
-          <img alt="">
-          <div class="lc-ov"></div>
-          <div class="lc-icon">✦</div>
-          <div class="lc-name">More</div>
-          <div class="lc-hint">Click to add photo</div>
-          <div class="lc-lbl">More hobbies</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="life-section">
-      <div class="life-section-hdr">
-        <div class="eyebrow" style="margin:0">Memories</div>
-        <span class="life-section-count">People &amp; program moments</span>
-      </div>
-      <div class="life-grid">
-        <div class="lc lc-wide" id="lc-mem1">
-          <input type="file" accept="image/*" onchange="ll(this,'lc-mem1')">
-          <img alt="">
-          <div class="lc-ov"></div>
-          <div class="lc-icon">✦</div>
-          <div class="lc-name">UCSF Cohort</div>
-          <div class="lc-hint">Click to add photo</div>
-          <div class="lc-lbl">UCSF Health Data Science cohort</div>
-        </div>
-
-        <div class="lc" id="lc-mem2">
-          <input type="file" accept="image/*" onchange="ll(this,'lc-mem2')">
-          <img alt="">
-          <div class="lc-ov"></div>
-          <div class="lc-icon">✦</div>
-          <div class="lc-name">CMU Friends</div>
-          <div class="lc-hint">Click to add photo</div>
-          <div class="lc-lbl">CMU Stats &amp; ML crew</div>
-        </div>
-
-        <div class="lc" id="lc-mem3">
-          <input type="file" accept="image/*" onchange="ll(this,'lc-mem3')">
-          <img alt="">
-          <div class="lc-ov"></div>
-          <div class="lc-icon">✦</div>
-          <div class="lc-name">Japan &amp; Kakehashi</div>
-          <div class="lc-hint">Click to add photo</div>
-          <div class="lc-lbl">Kakehashi cultural diplomacy exchange</div>
-        </div>
-
-        <div class="lc" id="lc-mem4">
-          <input type="file" accept="image/*" onchange="ll(this,'lc-mem4')">
-          <img alt="">
-          <div class="lc-ov"></div>
-          <div class="lc-icon">✦</div>
-          <div class="lc-name">More Memories</div>
-          <div class="lc-hint">Click to add photo</div>
-          <div class="lc-lbl">Memories</div>
-        </div>
-      </div>
-    </div>
-
+    <div class="life-masonry" id="lifeMasonry"></div>
   </div>
+</div>
+
+<!-- Lightbox -->
+<div class="lb-overlay" id="lbOverlay">
+  <button class="lb-close" id="lbClose">&times;</button>
+  <button class="lb-nav lb-prev" id="lbPrev">&#8249;</button>
+  <div class="lb-content">
+    <img class="lb-img" id="lbImg" src="" alt="">
+    <div class="lb-cap" id="lbCap"></div>
+  </div>
+  <button class="lb-nav lb-next" id="lbNext">&#8250;</button>
 </div>
 
 <script src="./encoded.js"></script>
@@ -939,23 +746,81 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.2 });
 if (projAnchor) observer.observe(projAnchor);
 
-function ll(inp, id) {
-  if (!inp.files[0]) return;
-  const c = document.getElementById(id), i = c.querySelector('img');
-  i.src = URL.createObjectURL(inp.files[0]); i.style.display = 'block';
-  c.querySelectorAll('.lc-icon,.lc-name,.lc-hint').forEach(e => e.style.display = 'none');
-}
-</script>
+// Life page photos
+const LIFE_PHOTOS = [
+  {src:'images/travel-vatican.jpg',cat:'travel',cap:'Vatican Museums spiral staircase · Rome'},
+  {src:'images/travel-eiffel.jpg',cat:'travel',cap:'Eiffel Tower at dusk · Paris'},
+  {src:'images/travel-ggb.jpg',cat:'travel',cap:'Golden Gate Bridge · San Francisco'},
+  {src:'images/travel-suzhou.jpg',cat:'travel',cap:'Ancient water town · Suzhou, China'},
+  {src:'images/travel-westlake.jpg',cat:'travel',cap:'Lotus ponds at West Lake · Hangzhou'},
+  {src:'images/travel-yugarden.jpg',cat:'travel',cap:'Yu Garden · Shanghai'},
+  {src:'images/travel-nola.jpg',cat:'travel',cap:'St. Charles streetcar · New Orleans'},
+  {src:'images/food-sesame.jpg',cat:'food',cap:'Sesame balls · SF'},
+  {src:'images/food-japanese.jpg',cat:'food',cap:'Udon & rice bowls'},
+  {src:'images/food-boba.jpg',cat:'food',cap:'Boba run · SF'},
+  {src:'images/food-poke.jpg',cat:'food',cap:'Poke bowl · SF'},
+  {src:'images/food-suzhou.jpg',cat:'food',cap:'Street food · Suzhou, China'},
+  {src:'images/art-jellyfish.jpg',cat:'art',cap:'Jellyfish watercolor · 2018'},
+  {src:'images/art-foxes.jpg',cat:'art',cap:'Fox cubs watercolor · 2018'},
+  {src:'images/art-session.jpg',cat:'art',cap:'Painting outdoors with friends · 2025'},
+  {src:'images/art-museum.jpg',cat:'art',cap:'Museum day · 2024'},
+  {src:'images/friends-halloween.jpg',cat:'friends',cap:'Halloween · 2024'},
+  {src:'images/friends-bench.jpg',cat:'friends',cap:'Bay views · SF, 2025'},
+  {src:'images/friends-stickers.jpg',cat:'friends',cap:'Out in the city · 2026'},
+  {src:'images/friends-ucsf.jpg',cat:'friends',cap:'UCSF Health Data Science cohort · 2025'},
+  {src:'images/research-poster.jpg',cat:'research',cap:'Best Poster · IGHS 2026'},
+];
 
-<script>
-function ll(inp, id){
-  if (!inp.files[0]) return;
-  const c = document.getElementById(id);
-  const i = c.querySelector('img');
-  i.src = URL.createObjectURL(inp.files[0]);
-  i.style.display = 'block';
-  c.querySelectorAll('.lc-icon,.lc-name,.lc-hint').forEach(e => e.style.display = 'none');
+const lifeMasonry = document.getElementById('lifeMasonry');
+function buildLifeGrid(filter) {
+  lifeMasonry.innerHTML = '';
+  const visible = filter === 'all' ? LIFE_PHOTOS : LIFE_PHOTOS.filter(p => p.cat === filter);
+  visible.forEach(p => {
+    const card = document.createElement('div');
+    card.className = 'life-card reveal';
+    card.dataset.cat = p.cat;
+    card.innerHTML = `<img src="${p.src}" alt="${p.cap}" loading="lazy"><div class="life-card-cap">${p.cap}</div>`;
+    card.addEventListener('click', () => openLb(p.src, visible));
+    lifeMasonry.appendChild(card);
+  });
+  setTimeout(() => {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('revealed'); io.unobserve(e.target); } });
+    }, {threshold:0.06});
+    lifeMasonry.querySelectorAll('.life-card').forEach(c => io.observe(c));
+  }, 30);
 }
+buildLifeGrid('all');
+
+document.querySelectorAll('.life-filter').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.life-filter').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    buildLifeGrid(btn.dataset.filter);
+  });
+});
+
+let lbList = [], lbIdx = 0;
+const lbOverlay = document.getElementById('lbOverlay');
+const lbImg = document.getElementById('lbImg');
+const lbCap = document.getElementById('lbCap');
+function openLb(src, list) {
+  lbList = list; lbIdx = list.findIndex(p => p.src === src);
+  lbImg.src = list[lbIdx].src; lbCap.textContent = list[lbIdx].cap;
+  lbOverlay.classList.add('open'); document.body.style.overflow = 'hidden';
+}
+function closeLb() { lbOverlay.classList.remove('open'); document.body.style.overflow = ''; }
+function lbShow() { lbImg.src = lbList[lbIdx].src; lbCap.textContent = lbList[lbIdx].cap; }
+document.getElementById('lbClose').addEventListener('click', closeLb);
+document.getElementById('lbPrev').addEventListener('click', () => { lbIdx = (lbIdx - 1 + lbList.length) % lbList.length; lbShow(); });
+document.getElementById('lbNext').addEventListener('click', () => { lbIdx = (lbIdx + 1) % lbList.length; lbShow(); });
+lbOverlay.addEventListener('click', e => { if (e.target === lbOverlay) closeLb(); });
+document.addEventListener('keydown', e => {
+  if (!lbOverlay.classList.contains('open')) return;
+  if (e.key === 'Escape') closeLb();
+  if (e.key === 'ArrowLeft') { lbIdx = (lbIdx - 1 + lbList.length) % lbList.length; lbShow(); }
+  if (e.key === 'ArrowRight') { lbIdx = (lbIdx + 1) % lbList.length; lbShow(); }
+});
 </script>
 
 </body>
