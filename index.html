@@ -375,13 +375,13 @@ footer{
     </div>
     <div class="proj-grid">
 
-      <!-- ITGAP: no poster yet, thumb links to GitHub -->
+      <!-- ITGAP -->
       <div class="proj-card">
-        <div class="proj-thumb thumb-itgap" onclick="window.open('https://github.com/mlizhangx/ITGAP/tree/main','_blank')">
+        <div class="proj-thumb" onclick="openItgapFig()" style="cursor:zoom-in">
+          <img src="images/itgap-fig1.jpg" alt="ITGAP Figure 1">
           <div class="proj-thumb-overlay"></div>
-          <div class="proj-year">UCSF &nbsp;·&nbsp; 2025</div>
-          <div class="thumb-icon">&#x1F9EC;</div>
-          <div class="proj-thumb-zoom"><span>Open GitHub ↗</span></div>
+          <div class="proj-year">UCSF &nbsp;·&nbsp; 2026</div>
+          <div class="proj-thumb-zoom"><span>View Figure ↗</span></div>
         </div>
         <div class="proj-body">
           <div class="proj-cat">Computational Immunology &nbsp;·&nbsp; Co-first Author</div>
@@ -653,6 +653,19 @@ const POSTERS = {
   }
 };
 
+function openItgapFig() {
+  document.getElementById('modal-title').textContent = 'ITGAP — TCR–Antigen Prediction Framework (Figure 1)';
+  const dlBtn = document.getElementById('modal-dl');
+  dlBtn.href = 'https://github.com/mlizhangx/ITGAP/tree/main';
+  dlBtn.textContent = 'GitHub ↗';
+  dlBtn.target = '_blank';
+  document.getElementById('modal-gh').style.display = 'none';
+  document.getElementById('modal-inner').classList.remove('dark');
+  document.getElementById('modal-body').innerHTML = '<img src="images/itgap-fig1.jpg" alt="ITGAP Figure 1" style="max-width:100%;height:auto;display:block;margin:auto;padding:16px">';
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
 function openPoster(key) {
   const p = POSTERS[key]; if (!p) return;
   document.getElementById('modal-title').textContent = p.title;
@@ -762,6 +775,13 @@ const LIFE_PHOTOS = [
   {src:'images/travel-nola.jpg',cat:'travel',cap:'St. Charles streetcar · New Orleans'},
   {src:'images/travel-nola-night.jpg',cat:'travel',cap:'French Quarter at night · New Orleans'},
   {src:'images/friends-beach.jpg',cat:'travel',cap:'Baker Beach at dusk · San Francisco'},
+  {src:'images/travel-seattle.jpg',cat:'travel',cap:'Gas Works Park · Seattle'},
+  {src:'images/travel-rome-statue.jpg',cat:'travel',cap:'Classical sculpture · Rome'},
+  {src:'images/travel-ducks.jpg',cat:'travel',cap:'Afternoon at the pond'},
+  {src:'images/travel-suzhou-canal.jpg',cat:'travel',cap:'Canal at dusk · Suzhou'},
+  {src:'images/travel-nola-flags.jpg',cat:'travel',cap:'Bourbon Street lights · New Orleans'},
+  {src:'images/travel-yugarden2.jpg',cat:'travel',cap:'Yu Garden at dusk · Shanghai'},
+  {src:'images/travel-westlake2.jpg',cat:'travel',cap:'West Lake · Hangzhou'},
   {src:'images/food-rome-porchetta.jpg',cat:'food',cap:'Porchetta · Rome'},
   {src:'images/food-rome-sandwich.jpg',cat:'food',cap:'I\' Girone De\' Ghiotti · Florence'},
   {src:'images/food-rome-gelato.jpg',cat:'food',cap:'Gelato · Venice'},
@@ -769,14 +789,26 @@ const LIFE_PHOTOS = [
   {src:'images/food-japanese.jpg',cat:'food',cap:'Udon & rice bowls'},
   {src:'images/food-boba.jpg',cat:'food',cap:'Boba run · Berkeley'},
   {src:'images/food-suzhou.jpg',cat:'food',cap:'Street food · Suzhou, China'},
+  {src:'images/food-omakase.jpg',cat:'food',cap:'Omakase dinner'},
+  {src:'images/food-bbq.jpg',cat:'food',cap:'BBQ spread · The Smoke Pit'},
+  {src:'images/food-rome-pasta2.jpg',cat:'food',cap:'Osteria da Fortunata · Rome'},
+  {src:'images/food-market-juice.jpg',cat:'food',cap:'Fresh juice at the market'},
+  {src:'images/food-mezze.jpg',cat:'food',cap:'Mezze platter'},
+  {src:'images/food-cheese-market.jpg',cat:'food',cap:'Cheese pasta at Christmas market'},
   {src:'images/art-jellyfish.jpg',cat:'art',cap:'Jellyfish watercolor · 2018'},
   {src:'images/art-foxes.jpg',cat:'art',cap:'Fox cubs watercolor · 2018'},
+  {src:'images/art-pineapple.jpg',cat:'art',cap:'Pineapple watercolor · 2018'},
+  {src:'images/art-tram.jpg',cat:'art',cap:'Tram watercolor · Tokyo'},
+  {src:'images/art-collage.jpg',cat:'art',cap:'Newspaper collage · 2024'},
   {src:'images/art-museum.jpg',cat:'art',cap:'Museum day · 2024'},
   {src:'images/friends-halloween.jpg',cat:'friends',cap:'Halloween · 2024'},
+  {src:'images/friends-halloween2.jpg',cat:'friends',cap:'Ghost costumes · Halloween 2024'},
   {src:'images/friends-bench.jpg',cat:'friends',cap:'Bay views · SF, 2025'},
+  {src:'images/friends-bayview.jpg',cat:'friends',cap:'Watching the bay · SF'},
   {src:'images/friends-stickers.jpg',cat:'friends',cap:'Out in the city · 2026'},
   {src:'images/friends-ucsf.jpg',cat:'friends',cap:'UCSF Health Data Science cohort · 2025'},
   {src:'images/art-session.jpg',cat:'friends',cap:'Painting outdoors · 2025'},
+  {src:'images/friends-rocky-beach.jpg',cat:'friends',cap:'Rocky beach · California'},
   {src:'images/research-poster.jpg',cat:'research',cap:'Best Poster · IGHS 2026'},
   {src:'images/research-poster2.jpg',cat:'research',cap:'Poster session · 2025'},
 ];
