@@ -574,8 +574,9 @@ footer{
 .life-filter{padding:7px 18px;border-radius:99px;border:1px solid var(--glass-border);background:#f1f5f9;color:var(--ink2);font-size:.82rem;font-family:var(--sans);cursor:pointer;transition:all .18s;line-height:1}
 .life-filter:hover{border-color:var(--terra);color:var(--terra)}
 .life-filter.active{background:var(--terra);color:#fff;border-color:var(--terra)}
-.life-masonry{columns:3 240px;column-gap:14px}
-.life-card{break-inside:avoid;margin-bottom:14px;border-radius:var(--r-md);overflow:hidden;position:relative;cursor:pointer;background:#e2e8f0;transition:transform .22s,box-shadow .22s}
+.life-masonry{display:flex;gap:14px;align-items:flex-start}
+.life-masonry-col{flex:1;min-width:0;display:flex;flex-direction:column;gap:14px}
+.life-card{border-radius:var(--r-md);overflow:hidden;position:relative;cursor:pointer;background:#e2e8f0;transition:transform .22s,box-shadow .22s}
 .life-card:hover{transform:translateY(-3px);box-shadow:var(--glass-hover)}
 .life-card img{display:block;width:100%;height:320px;object-fit:cover;object-position:center}
 .life-card[data-cat="art"] img{height:420px}
@@ -595,7 +596,8 @@ footer{
 .lb-prev{left:16px}
 .lb-next{right:16px}
 @media(max-width:680px){
-  .life-masonry{columns:2 160px}
+  .life-masonry{gap:10px}
+  .life-masonry-col{gap:10px}
   .lb-nav{font-size:1.6rem;padding:6px 10px}
 }
 </style>
@@ -773,7 +775,7 @@ const LIFE_PHOTOS = [
   {src:'images/travel-nola.jpg',cat:'travel',cap:'St. Charles streetcar · New Orleans'},
   {src:'images/travel-rome-obelisk.jpg',cat:'travel',cap:'St. Peter\'s Square · Vatican City'},
   {src:'images/travel-vatican.jpg',cat:'travel',cap:'Vatican Museums spiral staircase · Rome'},
-  {src:'images/travel-rome-statue.jpg',cat:'travel',cap:'Classical sculpture · Rome'},
+  {src:'images/travel-rome-statue.jpg',cat:'travel',cap:'Pallas de Velletri · The Louvre, Paris'},
   {src:'images/travel-colosseum.jpg',cat:'travel',cap:'Colosseum · Rome'},
   {src:'images/travel-rome-alley.jpg',cat:'travel',cap:'Trastevere alley · Rome'},
   {src:'images/travel-eiffel.jpg',cat:'travel',cap:'Eiffel Tower at dusk · Paris'},
@@ -781,19 +783,19 @@ const LIFE_PHOTOS = [
   {src:'images/travel-yugarden.jpg',cat:'travel',cap:'Yu Garden · Shanghai'},
   {src:'images/travel-nola-night.jpg',cat:'travel',cap:'French Quarter at night · New Orleans'},
   {src:'images/travel-sunset-b.jpg',cat:'travel',cap:'USC campus at night · Los Angeles'},
-  {src:'images/food-rome-porchetta.jpg',cat:'food',cap:'Porchetta · Rome'},
+  {src:'images/food-rome-porchetta.jpg',cat:'food',cap:'De Nerbone · Florence'},
   {src:'images/food-rome-sandwich.jpg',cat:'food',cap:'I\' Girone De\' Ghiotti · Florence'},
   {src:'images/food-rome-gelato.jpg',cat:'food',cap:'Gelato · Venice'},
   {src:'images/food-sesame.jpg',cat:'food',cap:'Sesame balls · SF'},
   {src:'images/food-japanese.jpg',cat:'food',cap:'Udon & rice bowls'},
   {src:'images/food-boba.jpg',cat:'food',cap:'Boba run · Berkeley'},
   {src:'images/food-suzhou.jpg',cat:'food',cap:'Street food · Suzhou, China'},
-  {src:'images/food-omakase.jpg',cat:'food',cap:'Omakase dinner'},
+  {src:'images/food-omakase.jpg',cat:'food',cap:'Omakase dinner · NYC'},
   {src:'images/food-bbq.jpg',cat:'food',cap:'BBQ spread · The Smoke Pit'},
   {src:'images/food-rome-pasta2.jpg',cat:'food',cap:'Osteria da Fortunata · Rome'},
-  {src:'images/food-market-juice.jpg',cat:'food',cap:'Fresh juice at the market'},
+  {src:'images/food-market-juice.jpg',cat:'food',cap:'Fresh juice at Mercado de la Boqueria · Barcelona'},
   {src:'images/food-mezze.jpg',cat:'food',cap:'Mezze platter'},
-  {src:'images/food-cheese-market.jpg',cat:'food',cap:'Cheese pasta at Christmas market'},
+  {src:'images/food-cheese-market.jpg',cat:'food',cap:'Christmas market · Paris'},
   {src:'images/art-jellyfish.jpg',cat:'art',cap:'Jellyfish watercolor · 2018'},
   {src:'images/art-foxes.jpg',cat:'art',cap:'Fox cubs watercolor · 2018'},
   {src:'images/art-pineapple.jpg',cat:'art',cap:'Pineapple watercolor · 2018'},
@@ -815,13 +817,20 @@ const lifeMasonry = document.getElementById('lifeMasonry');
 function buildLifeGrid(filter) {
   lifeMasonry.innerHTML = '';
   const visible = filter === 'all' ? LIFE_PHOTOS : LIFE_PHOTOS.filter(p => p.cat === filter);
-  visible.forEach(p => {
+  const nCols = window.innerWidth <= 680 ? 2 : 3;
+  const cols = Array.from({length: nCols}, () => {
+    const col = document.createElement('div');
+    col.className = 'life-masonry-col';
+    lifeMasonry.appendChild(col);
+    return col;
+  });
+  visible.forEach((p, i) => {
     const card = document.createElement('div');
     card.className = 'life-card reveal';
     card.dataset.cat = p.cat;
     card.innerHTML = `<img src="${p.src}" alt="${p.cap}"><div class="life-card-cap">${p.cap}</div>`;
     card.addEventListener('click', () => openLb(p.src, visible));
-    lifeMasonry.appendChild(card);
+    cols[i % nCols].appendChild(card);
   });
   requestAnimationFrame(() => requestAnimationFrame(() => {
     lifeMasonry.querySelectorAll('.life-card').forEach(c => c.classList.add('revealed'));
