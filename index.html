@@ -822,12 +822,9 @@ function buildLifeGrid(filter) {
     card.addEventListener('click', () => openLb(p.src, visible));
     lifeMasonry.appendChild(card);
   });
-  setTimeout(() => {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('revealed'); io.unobserve(e.target); } });
-    }, {threshold:0.06});
-    lifeMasonry.querySelectorAll('.life-card').forEach(c => io.observe(c));
-  }, 30);
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    lifeMasonry.querySelectorAll('.life-card').forEach(c => c.classList.add('revealed'));
+  }));
 }
 buildLifeGrid('travel');
 
