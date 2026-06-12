@@ -765,21 +765,21 @@ if (projAnchor) observer.observe(projAnchor);
 
 // Life page photos
 const LIFE_PHOTOS = [
-  {src:'images/travel-colosseum.jpg',cat:'travel',cap:'Colosseum · Rome'},
-  {src:'images/travel-vatican.jpg',cat:'travel',cap:'Vatican Museums spiral staircase · Rome'},
+  {src:'images/travel-sunset-a.jpg',cat:'travel',cap:'Griffith Observatory at dusk · Los Angeles'},
+  {src:'images/travel-ducks.jpg',cat:'travel',cap:'Afternoon at the pond'},
+  {src:'images/travel-westlake.jpg',cat:'travel',cap:'Lotus ponds at West Lake · Hangzhou'},
+  {src:'images/travel-suzhou.jpg',cat:'travel',cap:'Ancient water town · Suzhou, China'},
+  {src:'images/travel-seattle.jpg',cat:'travel',cap:'Gas Works Park · Seattle'},
+  {src:'images/travel-nola.jpg',cat:'travel',cap:'St. Charles streetcar · New Orleans'},
   {src:'images/travel-rome-obelisk.jpg',cat:'travel',cap:'St. Peter\'s Square · Vatican City'},
+  {src:'images/travel-vatican.jpg',cat:'travel',cap:'Vatican Museums spiral staircase · Rome'},
+  {src:'images/travel-rome-statue.jpg',cat:'travel',cap:'Classical sculpture · Rome'},
+  {src:'images/travel-colosseum.jpg',cat:'travel',cap:'Colosseum · Rome'},
   {src:'images/travel-rome-alley.jpg',cat:'travel',cap:'Trastevere alley · Rome'},
   {src:'images/travel-eiffel.jpg',cat:'travel',cap:'Eiffel Tower at dusk · Paris'},
-  {src:'images/travel-suzhou.jpg',cat:'travel',cap:'Ancient water town · Suzhou, China'},
-  {src:'images/travel-westlake.jpg',cat:'travel',cap:'Lotus ponds at West Lake · Hangzhou'},
-  {src:'images/travel-yugarden.jpg',cat:'travel',cap:'Yu Garden · Shanghai'},
-  {src:'images/travel-nola.jpg',cat:'travel',cap:'St. Charles streetcar · New Orleans'},
-  {src:'images/travel-nola-night.jpg',cat:'travel',cap:'French Quarter at night · New Orleans'},
   {src:'images/friends-beach.jpg',cat:'travel',cap:'Baker Beach at dusk · San Francisco'},
-  {src:'images/travel-seattle.jpg',cat:'travel',cap:'Gas Works Park · Seattle'},
-  {src:'images/travel-rome-statue.jpg',cat:'travel',cap:'Classical sculpture · Rome'},
-  {src:'images/travel-ducks.jpg',cat:'travel',cap:'Afternoon at the pond'},
-  {src:'images/travel-sunset-a.jpg',cat:'travel',cap:'Griffith Observatory at dusk · Los Angeles'},
+  {src:'images/travel-yugarden.jpg',cat:'travel',cap:'Yu Garden · Shanghai'},
+  {src:'images/travel-nola-night.jpg',cat:'travel',cap:'French Quarter at night · New Orleans'},
   {src:'images/travel-sunset-b.jpg',cat:'travel',cap:'USC campus at night · Los Angeles'},
   {src:'images/food-rome-porchetta.jpg',cat:'food',cap:'Porchetta · Rome'},
   {src:'images/food-rome-sandwich.jpg',cat:'food',cap:'I\' Girone De\' Ghiotti · Florence'},
@@ -801,8 +801,7 @@ const LIFE_PHOTOS = [
   {src:'images/art-collage.jpg',cat:'art',cap:'Newspaper collage · 2024'},
   {src:'images/art-museum.jpg',cat:'art',cap:'Museum day · 2024'},
   {src:'images/friends-halloween.jpg',cat:'friends',cap:'Halloween · 2024'},
-  {src:'images/friends-bench.jpg',cat:'friends',cap:'Bay views · SF, 2025'},
-  {src:'images/friends-bayview.jpg',cat:'friends',cap:'Watching the bay · SF'},
+  {src:'images/friends-bayview.jpg',cat:'friends',cap:'Waterfront bench · Sausalito'},
   {src:'images/friends-stickers.jpg',cat:'friends',cap:'Out in the city · 2026'},
   {src:'images/friends-ucsf.jpg',cat:'friends',cap:'UCSF Health Data Science cohort · 2025'},
   {src:'images/art-session.jpg',cat:'friends',cap:'Painting outdoors · 2025'},
@@ -819,7 +818,7 @@ function buildLifeGrid(filter) {
     const card = document.createElement('div');
     card.className = 'life-card reveal';
     card.dataset.cat = p.cat;
-    card.innerHTML = `<img src="${p.src}" alt="${p.cap}" loading="lazy"><div class="life-card-cap">${p.cap}</div>`;
+    card.innerHTML = `<img src="${p.src}" alt="${p.cap}"><div class="life-card-cap">${p.cap}</div>`;
     card.addEventListener('click', () => openLb(p.src, visible));
     lifeMasonry.appendChild(card);
   });
