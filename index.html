@@ -605,20 +605,49 @@ footer{
 <style>
 /* ── VERSE ──────────────────────────────────────────────────── */
 #versePane{padding-bottom:48px;}
-.verse-card{background:#fff;border:1px solid var(--glass-border);border-radius:var(--r-lg);box-shadow:var(--glass-shadow);margin-bottom:10px;overflow:hidden;}
-.verse-head{display:flex;align-items:center;justify-content:space-between;padding:20px 26px;cursor:pointer;user-select:none;transition:background .18s;}
-.verse-head:hover{background:#f8fafc;}
-.verse-head-left{display:flex;flex-direction:column;gap:4px;}
-.verse-head-title{font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);}
-.verse-head-sub{font-size:.72rem;font-weight:300;color:var(--ink3);letter-spacing:.02em;}
-.verse-plus{font-size:1.4rem;font-weight:200;color:var(--ink3);transition:transform .35s cubic-bezier(.16,1,.3,1),color .2s;}
-.verse-card.open .verse-plus{transform:rotate(45deg);color:var(--ink);}
-.verse-body{max-height:0;overflow:hidden;transition:max-height .65s cubic-bezier(.16,1,.3,1);}
-.verse-card.open .verse-body{max-height:8000px;}
-.verse-body-inner{padding:8px 26px 32px;}
-.verse-divider{height:1px;background:var(--glass-border);margin-bottom:24px;}
-.verse-line{display:block;font-size:clamp(.88rem,1.5vw,.98rem);font-weight:300;line-height:2.3;color:var(--ink);letter-spacing:.01em;}
-.verse-spacer{display:block;height:.7em;}
+.verse-poems{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+@media(max-width:680px){.verse-poems{grid-template-columns:1fr;}}
+.verse-card{
+  border-radius:var(--r-lg);overflow:hidden;height:340px;
+  background:#0f172a;box-shadow:var(--glass-shadow);
+  cursor:pointer;display:flex;flex-direction:column;
+  transition:transform .22s,box-shadow .22s;
+}
+.verse-card:hover{transform:translateY(-3px);box-shadow:var(--glass-hover);}
+.verse-card-header{
+  padding:18px 22px 14px;flex-shrink:0;
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+.verse-card-title{display:block;font-size:.62rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:#f0eae0;}
+.verse-card-sub{display:block;font-size:.7rem;font-weight:300;color:rgba(240,234,224,.35);margin-top:3px;letter-spacing:.04em;}
+.verse-track-wrap{
+  flex:1;overflow:hidden;padding:14px 22px 0;
+  -webkit-mask-image:linear-gradient(to bottom,black 60%,transparent 100%);
+  mask-image:linear-gradient(to bottom,black 60%,transparent 100%);
+}
+.verse-track{animation:verseScroll linear infinite;}
+.verse-card:hover .verse-track{animation-play-state:paused;}
+@keyframes verseScroll{from{transform:translateY(0)}to{transform:translateY(-50%)}}
+.verse-line{display:block;font-size:.8rem;font-weight:300;line-height:2.15;color:rgba(240,234,224,.65);letter-spacing:.02em;}
+.verse-spacer{display:block;height:.55em;}
+/* modal */
+.verse-modal{
+  position:fixed;inset:0;z-index:900;
+  background:rgba(15,23,42,.82);backdrop-filter:blur(10px);
+  overflow-y:auto;padding:48px 20px;display:none;
+}
+.verse-modal.open{display:block;}
+.verse-modal-inner{
+  max-width:580px;margin:0 auto;
+  background:#fff;border-radius:var(--r-lg);
+  padding:36px 44px 52px;
+}
+.verse-modal-bar{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:28px;}
+.verse-modal-close{background:none;border:none;font-size:1.6rem;color:var(--ink3);cursor:pointer;padding:0 2px;line-height:1;transition:color .15s;}
+.verse-modal-close:hover{color:var(--ink);}
+.verse-modal .verse-line{color:var(--ink);font-size:clamp(.88rem,1.5vw,.98rem);line-height:2.3;}
+.verse-modal .verse-spacer{height:.7em;}
+@media(max-width:680px){.verse-modal-inner{padding:28px 22px 40px;}}
 </style>
 
 <!-- LIFE PAGE -->
@@ -1081,42 +1110,77 @@ const VERSE_POEMS = [
 
 function buildVerse() {
   var container = document.getElementById('versePoems');
-  if (!container) return;
+  if (!container || container.children.length) return;
   VERSE_POEMS.forEach(function(poem) {
+    var textLines = poem.lines.filter(function(l) { return !!l.t; }).length;
+    var dur = Math.max(18, Math.round(textLines * 1.3)) + 's';
     var card = document.createElement('div');
     card.className = 'verse-card';
-    var head = document.createElement('div');
-    head.className = 'verse-head';
-    head.innerHTML =
-      '<div class="verse-head-left"><span class="verse-head-title">' + poem.title +
-      '</span><span class="verse-head-sub">' + poem.sub + '</span></div>' +
-      '<span class="verse-plus">+</span>';
-    head.addEventListener('click', function() { card.classList.toggle('open'); });
-    var body = document.createElement('div');
-    body.className = 'verse-body';
-    var inner = document.createElement('div');
-    inner.className = 'verse-body-inner';
-    var divider = document.createElement('div');
-    divider.className = 'verse-divider';
-    inner.appendChild(divider);
-    poem.lines.forEach(function(line) {
-      if (!line.t) {
-        var sp = document.createElement('span');
-        sp.className = 'verse-spacer';
-        inner.appendChild(sp); return;
-      }
-      var span = document.createElement('span');
-      span.className = 'verse-line';
-      span.textContent = line.t;
-      span.style.paddingLeft = VERSE_INDENT[line.i] || '0';
-      inner.appendChild(span);
-    });
-    body.appendChild(inner); card.appendChild(head); card.appendChild(body);
+    // header
+    var hdr = document.createElement('div');
+    hdr.className = 'verse-card-header';
+    hdr.innerHTML = '<span class="verse-card-title">' + poem.title + '</span>' +
+                    '<span class="verse-card-sub">' + poem.sub + '</span>';
+    // scrolling track
+    var wrap = document.createElement('div');
+    wrap.className = 'verse-track-wrap';
+    var track = document.createElement('div');
+    track.className = 'verse-track';
+    track.style.animationDuration = dur;
+    function addLines(el) {
+      poem.lines.forEach(function(line) {
+        if (!line.t) {
+          var sp = document.createElement('span'); sp.className = 'verse-spacer'; el.appendChild(sp); return;
+        }
+        var s = document.createElement('span'); s.className = 'verse-line';
+        s.textContent = line.t; s.style.paddingLeft = VERSE_INDENT[line.i] || '0';
+        el.appendChild(s);
+      });
+    }
+    addLines(track); addLines(track); // duplicate for seamless loop
+    wrap.appendChild(track); card.appendChild(hdr); card.appendChild(wrap);
+    card.addEventListener('click', function() { openVerseModal(poem); });
     container.appendChild(card);
   });
 }
+
+function openVerseModal(poem) {
+  document.getElementById('verseModalTitle').textContent = poem.title;
+  document.getElementById('verseModalSub').textContent = poem.sub;
+  var body = document.getElementById('verseModalBody');
+  body.innerHTML = '';
+  poem.lines.forEach(function(line) {
+    if (!line.t) {
+      var sp = document.createElement('span'); sp.className = 'verse-spacer'; body.appendChild(sp); return;
+    }
+    var s = document.createElement('span'); s.className = 'verse-line';
+    s.textContent = line.t; s.style.paddingLeft = VERSE_INDENT[line.i] || '0';
+    body.appendChild(s);
+  });
+  document.getElementById('verseModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeVerseModal(e) {
+  if (e && e.target !== document.getElementById('verseModal')) return;
+  document.getElementById('verseModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
 buildVerse();
 </script>
 
+<div id="verseModal" class="verse-modal" onclick="closeVerseModal(event)">
+  <div class="verse-modal-inner" onclick="event.stopPropagation()">
+    <div class="verse-modal-bar">
+      <div>
+        <div id="verseModalTitle" class="verse-card-title" style="color:var(--ink)"></div>
+        <div id="verseModalSub" class="verse-card-sub" style="color:var(--ink3)"></div>
+      </div>
+      <button class="verse-modal-close" onclick="closeVerseModal()">×</button>
+    </div>
+    <div id="verseModalBody"></div>
+  </div>
+</div>
 </body>
 </html>
