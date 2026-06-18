@@ -689,7 +689,7 @@ footer{
       <button class="life-filter" data-filter="art">Art</button>
       <button class="life-filter" data-filter="friends">Friends</button>
       <button class="life-filter" data-filter="research">Research</button>
-      <button class="life-filter" data-filter="verse">Verse</button>
+      <button class="life-filter" data-filter="verse">Creative Writing</button>
     </div>
 
     <div class="life-masonry" id="lifeMasonry"></div>
@@ -1136,8 +1136,8 @@ function buildVerse() {
   var container = document.getElementById('versePoems');
   if (!container || container.children.length) return;
   var QUOTES = [
-    'There is an intruder\nin my home downstairs,',
-    'This was it.\nThis was the whole thing.'
+    'There is an intruder in my home downstairs,',
+    'Something not taught but only learned.'
   ];
   VERSE_POEMS.forEach(function(poem, idx) {
     var card = document.createElement('div');
