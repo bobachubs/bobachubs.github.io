@@ -606,18 +606,18 @@ footer{
 <style>
 /* ── POETRY ──────────────────────────────────────────────────── */
 .poe-stage{
-  min-height:100vh;background:#0c0f13;
+  min-height:100vh;background:#f2ede6;
   display:flex;align-items:center;justify-content:center;
   position:relative;overflow:hidden;padding:0 48px;cursor:crosshair;
 }
 .poe-stage::after{
   content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
   background:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.055'/%3E%3C/svg%3E");
-  opacity:.7;
+  opacity:.5;
 }
 .poe-ghost{
   position:absolute;font-size:21vw;font-weight:800;
-  letter-spacing:-.04em;color:#fff;opacity:.022;
+  letter-spacing:-.04em;color:#0c0f13;opacity:.04;
   pointer-events:none;user-select:none;white-space:nowrap;
   top:50%;left:50%;transform:translate(-50%,-50%);
   text-transform:uppercase;z-index:0;
@@ -633,21 +633,21 @@ footer{
 }
 .poe-eyebrow{
   font-size:.56rem;font-weight:600;letter-spacing:.3em;
-  text-transform:uppercase;color:rgba(240,234,224,.26);
+  text-transform:uppercase;color:rgba(12,15,19,.3);
 }
 .poe-counter{
   font-size:.66rem;font-weight:300;letter-spacing:.14em;
-  color:rgba(240,234,224,.26);
+  color:rgba(12,15,19,.3);
 }
 .poe-rule{
   width:100%;height:1px;margin-bottom:46px;
-  background:linear-gradient(to right,rgba(240,234,224,.1),rgba(240,234,224,.02));
+  background:linear-gradient(to right,rgba(12,15,19,.12),rgba(12,15,19,.02));
 }
 .poe-title-clip{overflow:hidden;margin-bottom:46px;}
 .poe-title{
-  font-size:clamp(3rem,10vw,8.5rem);font-weight:200;
-  letter-spacing:.18em;line-height:1;text-transform:uppercase;
-  color:#f0eae0;margin:0;
+  font-size:clamp(2rem,7vw,6.5rem);font-weight:200;
+  letter-spacing:.1em;line-height:1.1;text-transform:uppercase;
+  color:#0c0f13;margin:0;
   transform:translateY(112%);
   transition:transform 1s cubic-bezier(.16,1,.3,1);
 }
@@ -656,16 +656,16 @@ footer{
   min-height:120px;max-height:42vh;
   overflow-y:auto;overflow-x:hidden;
   margin-bottom:48px;padding-bottom:1.5em;
-  scrollbar-width:thin;scrollbar-color:rgba(240,234,224,.1) transparent;
+  scrollbar-width:thin;scrollbar-color:rgba(12,15,19,.1) transparent;
 }
 .poe-body::-webkit-scrollbar{width:2px;}
 .poe-body::-webkit-scrollbar-track{background:transparent;}
-.poe-body::-webkit-scrollbar-thumb{background:rgba(240,234,224,.1);border-radius:1px;}
+.poe-body::-webkit-scrollbar-thumb{background:rgba(12,15,19,.1);border-radius:1px;}
 .poe-line{overflow:hidden;}
 .poe-line-text{
   display:block;
   font-size:clamp(.93rem,1.9vw,1.18rem);font-weight:300;
-  line-height:2.1;color:#f0eae0;letter-spacing:.04em;
+  line-height:2.1;color:#0c0f13;letter-spacing:.04em;
   transform:translateY(112%);
   transition:transform .72s cubic-bezier(.16,1,.3,1);
 }
@@ -675,16 +675,16 @@ footer{
   background:none;border:none;padding:6px 0;
   font-family:var(--sans);font-size:.6rem;font-weight:500;
   letter-spacing:.16em;text-transform:uppercase;
-  color:rgba(240,234,224,.28);cursor:pointer;transition:color .2s;
+  color:rgba(12,15,19,.3);cursor:pointer;transition:color .2s;
 }
-.poe-btn:hover{color:#f0eae0;}
-.poe-btn:disabled{opacity:.1;cursor:default;pointer-events:none;}
+.poe-btn:hover{color:#0c0f13;}
+.poe-btn:disabled{opacity:.15;cursor:default;pointer-events:none;}
 .poe-ticks{display:flex;gap:10px;align-items:center;}
 .poe-tick{
-  width:22px;height:1px;background:rgba(240,234,224,.18);
+  width:22px;height:1px;background:rgba(12,15,19,.2);
   cursor:pointer;transition:all .35s;
 }
-.poe-tick.active{width:38px;background:#f0eae0;}
+.poe-tick.active{width:38px;background:#0c0f13;}
 @media(max-width:680px){
   .poe-stage{padding:0 26px;}
   .poe-inner{padding:80px 0 60px;}
