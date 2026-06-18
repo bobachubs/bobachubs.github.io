@@ -652,7 +652,15 @@ footer{
   transition:transform 1s cubic-bezier(.16,1,.3,1);
 }
 .poe-title.poe-in{transform:translateY(0);}
-.poe-body{min-height:140px;margin-bottom:60px;}
+.poe-body{
+  min-height:120px;max-height:42vh;
+  overflow-y:auto;overflow-x:hidden;
+  margin-bottom:48px;padding-bottom:1.5em;
+  scrollbar-width:thin;scrollbar-color:rgba(240,234,224,.1) transparent;
+}
+.poe-body::-webkit-scrollbar{width:2px;}
+.poe-body::-webkit-scrollbar-track{background:transparent;}
+.poe-body::-webkit-scrollbar-thumb{background:rgba(240,234,224,.1);border-radius:1px;}
 .poe-line{overflow:hidden;}
 .poe-line-text{
   display:block;
@@ -723,7 +731,7 @@ footer{
     <div class="poe-inner">
       <div class="poe-header">
         <span class="poe-eyebrow">Verse</span>
-        <span class="poe-counter"><span id="poe-num">01</span> / <span id="poe-tot">03</span></span>
+        <span class="poe-counter"><span id="poe-num">01</span> / <span id="poe-tot">02</span></span>
       </div>
       <div class="poe-rule"></div>
       <div class="poe-title-clip">
@@ -974,43 +982,185 @@ document.addEventListener('keydown', e => {
 });
 
 // ── POETRY ───────────────────────────────────────────────────────────────────
-// Edit your poems here — indent: 0 = flush, 1 = mid, 2 = far right
 const POEMS = [
   {
-    title: 'STILL',
+    title: 'BETRAYAL',
     lines: [
-      { t: 'after rain',                     i: 0 },
-      { t: 'the world holds its breath —',   i: 1 },
-      { t: 'even the trees',                 i: 2 },
-      { t: 'forgot how to exhale',           i: 0 },
+      {t:"There is an intruder in my home downstairs,", i:0},
+      {t:"Sounds robbing me of slumber and prickling my ear.", i:1},
+      {t:"Dad is welcoming someone, unaware", i:0},
+      {t:"", i:0},
+      {t:"that this is a real nightmare.", i:1},
+      {t:"Vile gurgles and mocking beeps near,", i:1},
+      {t:"there is an intruder in my home downstairs.", i:0},
+      {t:"", i:0},
+      {t:"With trembling steps as light as air,", i:0},
+      {t:"I draw close to the deafening buzz and sneers.", i:1},
+      {t:"Dad is welcoming someone, unaware", i:0},
+      {t:"", i:0},
+      {t:"this unwanted guest has stolen my chair.", i:1},
+      {t:"“Why?” I gestured to the coffee machine. “Don’t you fear", i:1},
+      {t:"there is an intruder in our home downstairs?”", i:0},
+      {t:"", i:0},
+      {t:"“Nonsense!” he smiled at the new houseware—", i:0},
+      {t:"Efficiency, Automation, Convenience— It would appear", i:2},
+      {t:"Dad is welcoming someone, unaware", i:0},
+      {t:"", i:0},
+      {t:"he just discarded those precious mornings we always share.", i:1},
+      {t:"The familiar, authentic cafetière no longer here,", i:1},
+      {t:"Dad is welcoming someone, unaware", i:0},
+      {t:"he brought an Intruder to our home downstairs.", i:0}
     ],
-    note: '— 2024'
+    note: ''
   },
   {
-    title: 'BLUE HOURS',
+    title: 'THE WHOLE THING',
     lines: [
-      { t: 'somewhere between',              i: 0 },
-      { t: 'dusk and memory',                i: 1 },
-      { t: 'I am always arriving',           i: 0 },
-      { t: 'never quite there',              i: 2 },
+      {t:"The alarm went off at 6 as it usually does.", i:0},
+      {t:"", i:0},
+      {t:"I got up to take the trail, before the heat,", i:0},
+      {t:"my boots with an extra crease from yesterday’s commute.", i:1},
+      {t:"Sixth pair of Merrell’s, same model, same size,", i:1},
+      {t:"ordered the day the fifth pair wore through.", i:1},
+      {t:"Sturdy. Reliable. The only shoes I know.", i:1},
+      {t:"I should change them again.", i:2},
+      {t:"", i:0},
+      {t:"The ferns were wet.", i:0},
+      {t:"", i:0},
+      {t:"A beaver worked the creek —", i:0},
+      {t:"hauling, stacking, chomping, never pausing for a moment.", i:1},
+      {t:"Just this branch, then that one, then the next.", i:1},
+      {t:"Never questioning the dam.", i:1},
+      {t:"", i:0},
+      {t:"I used to envy that. That certainty.", i:0},
+      {t:"", i:0},
+      {t:"I look up to see Mama bird building her nest,", i:0},
+      {t:"a few more branches than yesterday —", i:1},
+      {t:"she’ll have fledglings soon.", i:1},
+      {t:"How did she know how to build that?", i:2},
+      {t:"", i:0},
+      {t:"Next to her, an orb-weaver spider spun its web.", i:0},
+      {t:"It wasn’t there yesterday. Male, I presume.", i:1},
+      {t:"smaller abdomen, something I learned in science class, decades back.", i:1},
+      {t:"Where did he learn to weave?", i:2},
+      {t:"", i:0},
+      {t:"I was an engineer.", i:0},
+      {t:"", i:0},
+      {t:"Twenty-two years at the same firm, three different buildings.", i:1},
+      {t:"Same parking spot, once I figured out which one drained fastest.", i:1},
+      {t:"", i:0},
+      {t:"I built what they told me to build,", i:1},
+      {t:"fixed what they told me was broken,", i:1},
+      {t:"went home, ate something, slept, came back.", i:1},
+      {t:"", i:0},
+      {t:"I was good at it —", i:0},
+      {t:"I never argued with my coworkers,", i:1},
+      {t:"never missed a deadline,", i:1},
+      {t:"never had to be told twice.", i:1},
+      {t:"", i:0},
+      {t:"People asked if I liked my job and", i:0},
+      {t:"I said of course — twenty-two years, how could I not.", i:1},
+      {t:"", i:0},
+      {t:"Life wasn’t hard.", i:0},
+      {t:"Life wasn’t cruel.", i:0},
+      {t:"It was just what it was,", i:1},
+      {t:"the way weather is what it is.", i:1},
+      {t:"", i:0},
+      {t:"So how could I not.", i:0},
+      {t:"", i:0},
+      {t:"The turtles passed through every spring,", i:0},
+      {t:"same week, same shoreline,", i:1},
+      {t:"heading somewhere they’d never seen", i:1},
+      {t:"but somehow knew.", i:2},
+      {t:"", i:0},
+      {t:"I’d sit on the same rock and watch them and think —", i:0},
+      {t:"", i:0},
+      {t:"do they ever stop and ask where they’re going?", i:1},
+      {t:"", i:0},
+      {t:"And I knew the answer was no,", i:0},
+      {t:"and some part of me thought:", i:1},
+      {t:"", i:0},
+      {t:"lucky bastards.", i:2},
+      {t:"", i:0},
+      {t:"It would surface sometimes, late,", i:0},
+      {t:"in that hour between awake and not —", i:1},
+      {t:"", i:0},
+      {t:"what is this, what is any of this —", i:2},
+      {t:"", i:0},
+      {t:"and then the alarm would go off", i:0},
+      {t:"and it would go quiet again,", i:1},
+      {t:"", i:0},
+      {t:"the way fog burns off the creek", i:1},
+      {t:"without you noticing the moment it’s gone.", i:1},
+      {t:"", i:0},
+      {t:"I kept walking that trail for ten more years.", i:0},
+      {t:"Same loop, different boots.", i:1},
+      {t:"", i:0},
+      {t:"Watched my kids grow", i:0},
+      {t:"the way I watched the seedlings near the trailhead —", i:1},
+      {t:"not paying attention, then suddenly: trees,", i:1},
+      {t:"and one of them now taller than me.", i:2},
+      {t:"", i:0},
+      {t:"Now I’m here.", i:0},
+      {t:"", i:0},
+      {t:"The room is white and quiet", i:0},
+      {t:"and smells like the inside of a clock.", i:1},
+      {t:"", i:0},
+      {t:"My daughter is in the chair by the window,", i:0},
+      {t:"asleep sitting up, in that same coat", i:1},
+      {t:"she’s had since she was eleven —", i:1},
+      {t:"wrong size for years now, sleeves too short,", i:1},
+      {t:"and she still wears it anyway.", i:2},
+      {t:"", i:0},
+      {t:"The light’s doing that gold thing it does", i:0},
+      {t:"at the end of the day —", i:1},
+      {t:"the thing I used to drive forty minutes", i:1},
+      {t:"just to sit and watch.", i:2},
+      {t:"", i:0},
+      {t:"And I keep thinking about the sparrow —", i:0},
+      {t:"not the nest, but the fledglings.", i:1},
+      {t:"The spider, not the web,", i:0},
+      {t:"but whether it managed to eat.", i:1},
+      {t:"", i:0},
+      {t:"I built things. I raised people.", i:0},
+      {t:"", i:0},
+      {t:"I walked the same path enough times", i:0},
+      {t:"that it became a kind of compass.", i:1},
+      {t:"", i:0},
+      {t:"It only makes sense backwards.", i:0},
+      {t:"Of course it does.", i:0},
+      {t:"You can’t read a map while you’re folded inside it.", i:1},
+      {t:"", i:0},
+      {t:"The light’s still gold. My daughter stirs.", i:0},
+      {t:"I look at that coat —", i:0},
+      {t:"and I remember: she was eight.", i:1},
+      {t:"", i:0},
+      {t:"I told her three times, don’t touch that,", i:0},
+      {t:"some plant with leaves like hands —", i:1},
+      {t:"", i:0},
+      {t:"and she touched it anyway, because that’s what eight is.", i:0},
+      {t:"", i:0},
+      {t:"She screamed the whole way down,", i:0},
+      {t:"arm swelling, and I carried her on my back", i:1},
+      {t:"the last mile, both of us furious,", i:1},
+      {t:"her at the plant, me at her,", i:1},
+      {t:"both of us wrong.", i:2},
+      {t:"", i:0},
+      {t:"We never went back after that.", i:0},
+      {t:"I don’t think I decided that.", i:1},
+      {t:"It just happened.", i:2},
+      {t:"", i:0},
+      {t:"I laugh to myself. Quietly.", i:0},
+      {t:"", i:0},
+      {t:"This was it. This was the whole thing.", i:0}
     ],
-    note: '— 2025'
-  },
-  {
-    title: 'CARTOGRAPHY',
-    lines: [
-      { t: 'you mapped the exits',           i: 0 },
-      { t: 'before you found the door',      i: 1 },
-      { t: 'I was still learning',           i: 0 },
-      { t: 'the shape of the room',          i: 2 },
-    ],
-    note: '— 2026'
-  },
+    note: ''
+  }
 ];
 
 const POE_INDENT = ['0em', '2.6em', '5.2em'];
 const POE_GLYPHS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ·—×∾⊹';
-let pIdx = 0, pBusy = false, pReady = false;
+let pIdx = 0, pBusy = false, pReady = false, pScrollIO = null;
 
 function pScramble(el, text, ms) {
   ms = ms || 860;
@@ -1031,6 +1181,12 @@ function pBuild(idx) {
   const body = document.getElementById('poe-body');
   body.innerHTML = '';
   POEMS[idx].lines.forEach(function(line) {
+    if (!line.t) {
+      const sp = document.createElement('div');
+      sp.style.height = '.85em';
+      body.appendChild(sp);
+      return;
+    }
     const wrap = document.createElement('div');
     wrap.className = 'poe-line';
     const span = document.createElement('span');
@@ -1039,51 +1195,77 @@ function pBuild(idx) {
     span.style.paddingLeft = POE_INDENT[line.i] || '0';
     wrap.appendChild(span); body.appendChild(wrap);
   });
-  if (POEMS[idx].note) {
-    const nw = document.createElement('div'); nw.className = 'poe-line';
-    const ns = document.createElement('span'); ns.className = 'poe-line-text';
-    ns.style.cssText = 'font-size:.58rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(240,234,224,.18);padding-top:10px';
-    ns.textContent = POEMS[idx].note;
-    nw.appendChild(ns); body.appendChild(nw);
-  }
 }
 
 function pAnimate(idx) {
+  const poem = POEMS[idx];
   const titleEl = document.getElementById('poe-title');
+  const body = document.getElementById('poe-body');
+  body.scrollTop = 0;
   document.getElementById('poe-num').textContent = String(idx + 1).padStart(2, '0');
-  document.getElementById('poe-ghost').textContent = POEMS[idx].title;
+  document.getElementById('poe-ghost').textContent = poem.title;
   document.querySelectorAll('.poe-tick').forEach(function(t, i) { t.classList.toggle('active', i === idx); });
   titleEl.classList.remove('poe-in');
   pBuild(idx);
+  if (pScrollIO) { pScrollIO.disconnect(); pScrollIO = null; }
   setTimeout(function() {
     titleEl.classList.add('poe-in');
-    pScramble(titleEl, POEMS[idx].title);
-    document.querySelectorAll('#poe-body .poe-line-text').forEach(function(el, i) {
-      setTimeout(function() { el.classList.add('poe-in'); }, 300 + i * 100);
-    });
+    pScramble(titleEl, poem.title);
+    var pInitTime = Date.now();
+    var pStagger = 0;
+    pScrollIO = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (!e.isIntersecting) return;
+        var txt = e.target.querySelector('.poe-line-text');
+        if (txt) {
+          var delay = (Date.now() - pInitTime < 1400) ? (pStagger++ * 72) : 0;
+          setTimeout(function() { txt.classList.add('poe-in'); }, delay);
+        }
+        pScrollIO.unobserve(e.target);
+      });
+    }, { root: body, rootMargin: '0px 0px -4% 0px', threshold: 0.05 });
+    body.querySelectorAll('.poe-line').forEach(function(el) { pScrollIO.observe(el); });
   }, 60);
 }
 
 function pGo(next) {
   if (pBusy || next === pIdx || next < 0 || next >= POEMS.length) return;
   pBusy = true;
+  if (pScrollIO) { pScrollIO.disconnect(); pScrollIO = null; }
   const titleEl = document.getElementById('poe-title');
-  const lines = Array.from(document.querySelectorAll('#poe-body .poe-line-text'));
-  lines.slice().reverse().forEach(function(el, i) {
-    setTimeout(function() {
-      el.style.transition = 'transform .42s cubic-bezier(.55,0,1,.45)';
-      el.style.transform = 'translateY(-115%)';
-    }, i * 52);
-  });
-  setTimeout(function() {
-    titleEl.style.transition = 'transform .48s cubic-bezier(.55,0,1,.45)';
+  const body = document.getElementById('poe-body');
+  const isScrollable = body.scrollHeight > body.clientHeight + 2;
+  if (isScrollable) {
+    body.style.transition = 'opacity .28s ease';
+    body.style.opacity = '0';
+    titleEl.style.transition = 'transform .4s cubic-bezier(.55,0,1,.45)';
     titleEl.style.transform = 'translateY(-115%)';
-  }, lines.length * 52);
-  setTimeout(function() {
-    titleEl.style.transition = ''; titleEl.style.transform = '';
-    pIdx = next; pAnimate(pIdx); pNavSync();
-    setTimeout(function() { pBusy = false; }, 950);
-  }, lines.length * 52 + 360);
+    setTimeout(function() {
+      body.style.transition = ''; body.style.opacity = '';
+      titleEl.style.transition = ''; titleEl.style.transform = '';
+      body.scrollTop = 0;
+      pIdx = next; pAnimate(pIdx); pNavSync();
+      setTimeout(function() { pBusy = false; }, 950);
+    }, 420);
+  } else {
+    const lines = Array.from(body.querySelectorAll('.poe-line-text'));
+    lines.slice().reverse().forEach(function(el, i) {
+      setTimeout(function() {
+        el.style.transition = 'transform .42s cubic-bezier(.55,0,1,.45)';
+        el.style.transform = 'translateY(-115%)';
+      }, i * 52);
+    });
+    setTimeout(function() {
+      titleEl.style.transition = 'transform .48s cubic-bezier(.55,0,1,.45)';
+      titleEl.style.transform = 'translateY(-115%)';
+    }, lines.length * 52);
+    setTimeout(function() {
+      titleEl.style.transition = ''; titleEl.style.transform = '';
+      body.scrollTop = 0;
+      pIdx = next; pAnimate(pIdx); pNavSync();
+      setTimeout(function() { pBusy = false; }, 950);
+    }, lines.length * 52 + 360);
+  }
 }
 
 function pNavSync() {
