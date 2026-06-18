@@ -604,8 +604,7 @@ footer{
 
 <style>
 /* ── VERSE ──────────────────────────────────────────────────── */
-.verse-section{margin-top:64px;padding-top:52px;border-top:1px solid var(--glass-border);}
-.verse-eyebrow{font-size:.56rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--ink3);margin-bottom:20px;}
+#versePane{padding-bottom:48px;}
 .verse-card{background:#fff;border:1px solid var(--glass-border);border-radius:var(--r-lg);box-shadow:var(--glass-shadow);margin-bottom:10px;overflow:hidden;}
 .verse-head{display:flex;align-items:center;justify-content:space-between;padding:20px 26px;cursor:pointer;user-select:none;transition:background .18s;}
 .verse-head:hover{background:#f8fafc;}
@@ -637,12 +636,11 @@ footer{
       <button class="life-filter" data-filter="art">Art</button>
       <button class="life-filter" data-filter="friends">Friends</button>
       <button class="life-filter" data-filter="research">Research</button>
+      <button class="life-filter" data-filter="verse">Verse</button>
     </div>
 
     <div class="life-masonry" id="lifeMasonry"></div>
-
-    <div class="verse-section">
-      <div class="verse-eyebrow">Verse</div>
+    <div id="versePane" style="display:none">
       <div class="verse-poems" id="versePoems"></div>
     </div>
   </div>
@@ -864,11 +862,19 @@ function buildLifeGrid(filter) {
 }
 buildLifeGrid('travel');
 
+const versePane = document.getElementById('versePane');
 document.querySelectorAll('.life-filter').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('.life-filter').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    buildLifeGrid(btn.dataset.filter);
+    if (btn.dataset.filter === 'verse') {
+      lifeMasonry.style.display = 'none';
+      versePane.style.display = 'block';
+    } else {
+      versePane.style.display = 'none';
+      lifeMasonry.style.display = '';
+      buildLifeGrid(btn.dataset.filter);
+    }
   });
 });
 
